@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MacOS下的hexo个人博客搭建">
+<meta property="og:url" content="http://yoursite.com/2018/05/01/hexo博客搭建/index.html">
+<meta property="og:site_name" content="张小全">
+<meta property="og:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-05-03T04:55:17.671Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MacOS下的hexo个人博客搭建">
+<meta name="twitter:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/05/01/hexo博客搭建/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>MacOS下的hexo个人博客搭建 | 张小全</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/IdealAvalon/IdealAvalon.github.io/" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张小全</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/01/hexo博客搭建/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhangXQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张小全">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MacOS下的hexo个人博客搭建
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-05-01 23:39:18" itemprop="dateCreated datePublished" datetime="2018-05-01T23:39:18+08:00">2018-05-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-05-03 12:55:17" itemprop="dateModified" datetime="2018-05-03T12:55:17+08:00">2018-05-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="hexo博客搭建"><a href="#hexo博客搭建" class="headerlink" title="hexo博客搭建"></a>hexo博客搭建</h1><blockquote>
+<p>本文从零开始搭建hexo博客，使用的系统是MacOS</p>
+</blockquote>
+<h2 id="内容简介"><a href="#内容简介" class="headerlink" title="内容简介"></a>内容简介</h2><blockquote>
+<ul>
+<li>git 安装</li>
+<li>node.js 安装</li>
+<li>hexo 安装</li>
+<li>github 相关使用</li>
+<li>next主题 下载和简单设置</li>
+<li>个人域名设置（可选）</li>
+<li>创建博文</li>
+</ul>
+</blockquote>
+<p>其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><p>下载并安装git，点击<a href="https://git-scm.com" target="_blank" rel="noopener">git官方网站</a>自行下载和安装<br>安装后打开终端，输入以下命令来验证git是否安装成功</p>
+<pre><code>$ git version
+git version 2.13.1
+</code></pre><p>会看到返回git的版本信息，说明安装成功</p>
+<h2 id="安装node-js"><a href="#安装node-js" class="headerlink" title="安装node.js"></a>安装node.js</h2><p>下载并安装node.js，点击<a href="https://nodejs.org/en/" target="_blank" rel="noopener">node.js官方网站</a>自行下载和安装<br>安装后打开终端，输入以下命令，来验证node.js安装是否成功</p>
+<pre><code>$ node -v
+v8.11.1
+</code></pre><p>可以看到返回node.js的版本信息，说明安装成功</p>
+<h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>上面我们安装了node.js，在这里使用node.js自带的npm工具安装hexo，只需要在终端中输入以下命令</p>
+<pre><code>npm i -g hexo
+</code></pre><p>等待安装完毕即可<br>接着输入以下命令，来测试hexo是否安装成功</p>
+<pre><code>$ hexo -v
+hexo-cli: 1.1.0
+os: Darwin 17.5.0 darwin x64
+http_parser: 2.8.0
+node: 8.11.1
+v8: 6.2.414.50
+uv: 1.19.1
+zlib: 1.2.11
+ares: 1.10.1-DEV
+modules: 57
+nghttp2: 1.25.0
+openssl: 1.0.2o
+icu: 60.1
+unicode: 10.0
+cldr: 32.0
+tz: 2017c
+</code></pre><p>可以看到输出很多信息，说明hexo安装成功</p>
+<h2 id="创建本地hexo文件夹"><a href="#创建本地hexo文件夹" class="headerlink" title="创建本地hexo文件夹"></a>创建本地hexo文件夹</h2><blockquote>
+<p>经过上面的过程，hexo的环境准备就结束了，现在开始正式搭建hexo博客</p>
+</blockquote>
+<p>在自己喜欢的地方创建一个文件夹，以后我们博客的所有相关内容就都放到这个文件夹中了，笔者在~/Documents下创建了hexo文件夹<br>进入hexo文件夹下</p>
+<pre><code>$ cd ~/Documents/hexo
+</code></pre><p>输入命令</p>
+<pre><code>$ hexo init
+</code></pre><p>这样，hexo文件夹的初始化就成功了<br>进入hexo文件夹中，会发现多出来一些文件目录和文件，这里说明几个常用文件及目录的作用  </p>
+<blockquote>
+<ul>
+<li>_config.yml: 用来配置hexo的相关设置</li>
+<li>source：用来存放创建的博文</li>
+<li>public：用来存放生成的页面</li>
+</ul>
+</blockquote>
+<p>到这里，我们的博客本地部分就已经搭好了，现在已经可以在本地访问，下面进行本地访问测试，输入命令：</p>
+<pre><code>$ sudo npm install hexo-server
+</code></pre><p>来安装本地服务<br>然后生成静态页面，并启动本地服务：</p>
+<pre><code>$ hexo generate（或简写 hexo g）
+$ hexo server
+</code></pre><p>启动服务后，打开浏览器，按照终端的输出信息输入地址，一般是<code>http://localhost:4000</code><br>如果没什么问题的话，就能访问到hexo的初始化页面,结束在终端中用：<code>ctrl+c</code>组合键   </p>
+<blockquote>
+<p>建议以后在将博文正式上传到GitHub之前先在本地预览，确定没问题，再上传。</p>
+</blockquote>
+<h2 id="关联github"><a href="#关联github" class="headerlink" title="关联github"></a>关联github</h2><blockquote>
+<p>关联GitHub后，我们便可以将博客相关内容上传到GitHub仓库，并在公网访问</p>
+</blockquote>
+<h3 id="注册GitHub账户并创建远程仓库"><a href="#注册GitHub账户并创建远程仓库" class="headerlink" title="注册GitHub账户并创建远程仓库"></a>注册GitHub账户并创建远程仓库</h3><p>如果没有GitHub账户，首先创建GitHub账户<br>然后创建GitHub仓库，与hexo关联的仓库命名格式有要求：<code>[yourname].github.io</code> </p>
+<h3 id="配置hexo本地设置"><a href="#配置hexo本地设置" class="headerlink" title="配置hexo本地设置"></a>配置hexo本地设置</h3><p>创建好GitHub仓库后，配置本地信息，将本地hexo仓库与远程仓库进行连接<br>修改hexo根目录下的<code>_config.yml</code>文件,找到<code>deploy</code>属性设置   </p>
+<pre><code>deploy:
+      type: git
+      repo: gihub: https://github.com/[yourname]/[yourname].github.io.git
+      branch: master
+</code></pre><p>注意<code>.yml</code>文件有固定的格式，在<code>:</code>后要加一个空格，否则会出错  </p>
+<h3 id="配置本地git仓库"><a href="#配置本地git仓库" class="headerlink" title="配置本地git仓库"></a>配置本地git仓库</h3><pre><code>$ git config --global user.name &quot;your name&quot;
+$ git config --global user.email &quot;your email&quot;
+</code></pre><h3 id="创建SSH"><a href="#创建SSH" class="headerlink" title="创建SSH"></a>创建SSH</h3><blockquote>
+<p>将本地ssh公钥复制到GitHub中就可以不输入用户名密码了</p>
+</blockquote>
+<pre><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
+</code></pre><p>找到公钥文件，并将文件复制到GitHub   </p>
+<pre><code>$ cd ~/.ssh
+$ cat id_rsa.pub
+</code></pre><p>然后将输出的内容全部复制<br>进入GitHub页面-&gt;settings-&gt;SSH and GPG keys-&gt; new ssh<br>将内容复制进去即可  </p>
+<h3 id="安装hexo的git部署"><a href="#安装hexo的git部署" class="headerlink" title="安装hexo的git部署"></a>安装hexo的git部署</h3><blockquote>
+<p>将本地hexo内容发布到GitHub仓库</p>
+</blockquote>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre><p>生成静态页面：</p>
+<pre><code>$ hexo generate
+</code></pre><p>部署到GitHub远程仓库：</p>
+<pre><code>$ hexo deploy
+</code></pre><p>或者上面两步用一个命令：</p>
+<pre><code>$ hexo d -g
+</code></pre><h2 id="公网访问博客"><a href="#公网访问博客" class="headerlink" title="公网访问博客"></a>公网访问博客</h2><p>如果上述步骤没有问题的话，就可以通过如下网址访问博客了：<br><code>http://yourname.github.io</code></p>
+<h2 id="next主题"><a href="#next主题" class="headerlink" title="next主题"></a>next主题</h2><blockquote>
+<p>next主题是hexo主题中十分受欢迎的一个主题，网上也有很多关于next主题优化的博文可以参考<br>这里只做简单介绍</p>
+</blockquote>
+<p>进入hexo/themes文件目录下，输入命令，下载next主题：</p>
+<pre><code>$ git clone https://github.com/theme-next/hexo-theme-next themes/next
+</code></pre><p>然后编辑hexo根目录下的<code>_config.yml</code>文件<br>找到<code>theme</code>配置，并改为<code>next</code><br>执行命令：</p>
+<pre><code>$ hexo clean
+$ hexo g
+$ hexo d
+</code></pre><p>即可更换主题<br>详细的美化方案请自行搜索</p>
+<h2 id="绑定个人域名"><a href="#绑定个人域名" class="headerlink" title="绑定个人域名"></a>绑定个人域名</h2><blockquote>
+<p>如果有公网域名可以将博客的地址绑定到自己的公网域名，可以到阿里云购买，便宜的十几块钱就可以搞定</p>
+<p>在这里笔者以阿里云购买的域名介绍</p>
+</blockquote>
+<h3 id="域名解析设置"><a href="#域名解析设置" class="headerlink" title="域名解析设置"></a>域名解析设置</h3><p>登录<a href="https://www.aliyun.com" target="_blank" rel="noopener">阿里云网站</a>,依次点击 <code>控制台-&gt;域名与网站（万网）-&gt;云解析DNS-&gt;选择自己的域名-&gt;添加解析-&gt;</code>  </p>
+<p>记录类型：A<br>主机记录：<a href="http://www.blog.steinsgate.cc（这里我使用了二级域名）" target="_blank" rel="noopener">www.blog.steinsgate.cc（这里我使用了二级域名）</a><br>记录值：192.30.252.153（固定的，GitHub官方给了两个，这是其中一个）<br>点击确认  </p>
+<h3 id="hexo配置设置"><a href="#hexo配置设置" class="headerlink" title="hexo配置设置"></a>hexo配置设置</h3><p>然后进入到hexo/source文件夹下，创建名称为<code>CNAME</code>的文件，没有任何扩展名</p>
+<pre><code>$ vim CNAME
+</code></pre><p>在文件中写入<code>www.blog.steinsgate.cc</code>，即你在阿里云设置好的域名<br><strong>注意：</strong><br>由于mac系统的原因，这个文件在上传到GitHub仓库时，会变成<code>cname</code>，即小写，这样会导致域名绑定失败，所以要进行下面的设置<br>进入<code>hexo/.deploy_git/</code>文件目录下，修改<code>.git</code>文件<br>设置<code>ignorecase = false</code><br>这样，在上传CNAME文件时，就不会变为小写（这是个坑，搞了好久才弄好）  </p>
+<h3 id="测试域名是否绑定成功"><a href="#测试域名是否绑定成功" class="headerlink" title="测试域名是否绑定成功"></a>测试域名是否绑定成功</h3><p>在浏览器中输入你绑定的域名即可！</p>
+<h2 id="创建博文"><a href="#创建博文" class="headerlink" title="创建博文"></a>创建博文</h2><p>在<code>hexo根目录</code>下输入命令： </p>
+<pre><code>$ hexo new “文章名字”
+</code></pre><p>进入<code>hexo/source/_posts</code>目录下，就可以看到新生成的文件了<code>文章名字.md</code>  </p>
+<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><p>hexo博文编写使用markdown语法，可以下载<code>macdown</code>软件，对<code>.md</code>扩展名的文章进行编辑，详细请参阅markdown语法。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/01/test/" rel="next" title="test">
+                <i class="fa fa-chevron-left"></i> test
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZhangXQ</p>
+              <p class="site-description motion-element" itemprop="description">blog.steinsgate.cc</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hexo博客搭建"><span class="nav-number">1.</span> <span class="nav-text">hexo博客搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#内容简介"><span class="nav-number">1.1.</span> <span class="nav-text">内容简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装git"><span class="nav-number">1.2.</span> <span class="nav-text">安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装node-js"><span class="nav-number">1.3.</span> <span class="nav-text">安装node.js</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装hexo"><span class="nav-number">1.4.</span> <span class="nav-text">安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建本地hexo文件夹"><span class="nav-number">1.5.</span> <span class="nav-text">创建本地hexo文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关联github"><span class="nav-number">1.6.</span> <span class="nav-text">关联github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册GitHub账户并创建远程仓库"><span class="nav-number">1.6.1.</span> <span class="nav-text">注册GitHub账户并创建远程仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置hexo本地设置"><span class="nav-number">1.6.2.</span> <span class="nav-text">配置hexo本地设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置本地git仓库"><span class="nav-number">1.6.3.</span> <span class="nav-text">配置本地git仓库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建SSH"><span class="nav-number">1.6.4.</span> <span class="nav-text">创建SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装hexo的git部署"><span class="nav-number">1.6.5.</span> <span class="nav-text">安装hexo的git部署</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#公网访问博客"><span class="nav-number">1.7.</span> <span class="nav-text">公网访问博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#next主题"><span class="nav-number">1.8.</span> <span class="nav-text">next主题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绑定个人域名"><span class="nav-number">1.9.</span> <span class="nav-text">绑定个人域名</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#域名解析设置"><span class="nav-number">1.9.1.</span> <span class="nav-text">域名解析设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hexo配置设置"><span class="nav-number">1.9.2.</span> <span class="nav-text">hexo配置设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试域名是否绑定成功"><span class="nav-number">1.9.3.</span> <span class="nav-text">测试域名是否绑定成功</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建博文"><span class="nav-number">1.10.</span> <span class="nav-text">创建博文</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#编写博文"><span class="nav-number">1.10.1.</span> <span class="nav-text">编写博文</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangXQ</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

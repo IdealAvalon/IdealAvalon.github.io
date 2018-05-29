@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="张小全">
 <meta property="og:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-29T12:49:09.827Z">
+<meta property="og:updated_time" content="2018-05-29T13:33:33.077Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MacOS下的hexo个人博客搭建">
 <meta name="twitter:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
@@ -352,7 +352,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-29 20:49:09" itemprop="dateModified" datetime="2018-05-29T20:49:09+08:00">2018-05-29</time>
+                <time title="Modified: 2018-05-29 21:33:33" itemprop="dateModified" datetime="2018-05-29T21:33:33+08:00">2018-05-29</time>
               
             
           </span>
@@ -485,7 +485,7 @@ $ hexo server
 <h3 id="配置hexo本地设置"><a href="#配置hexo本地设置" class="headerlink" title="配置hexo本地设置"></a>配置hexo本地设置</h3><p>创建好GitHub仓库后，配置本地信息，将本地hexo仓库与远程仓库进行连接<br>修改hexo根目录下的<code>_config.yml</code>文件,找到<code>deploy</code>属性设置   </p>
 <pre><code>deploy:
       type: git
-      repo: gihub:https://github.com/[yourname]/[yourname].github.io.git
+      repository: git@github.com:yourname/yourname.github.io.git
       branch: master
 </code></pre><p>注意<code>.yml</code>文件有固定的格式，在key的<code>:</code>后要加一个空格，否则会出错  </p>
 <h3 id="配置本地git仓库"><a href="#配置本地git仓库" class="headerlink" title="配置本地git仓库"></a>配置本地git仓库</h3><pre><code>$ git config --global user.name &quot;your name&quot;
@@ -493,11 +493,11 @@ $ git config --global user.email &quot;your email&quot;
 </code></pre><h3 id="创建SSH"><a href="#创建SSH" class="headerlink" title="创建SSH"></a>创建SSH</h3><blockquote>
 <p>将本地ssh公钥复制到GitHub中就可以不输入用户名密码了</p>
 </blockquote>
-<pre><code>$ ssh-keygen -t rsa -C &quot;youremail@example.com&quot;
-</code></pre><p>找到公钥文件，并将文件复制到GitHub   </p>
+<pre><code>$ ssh-keygen
+</code></pre><p>按三次回车，不用输入任何东西<br>找到公钥文件，并将文件复制到GitHub   </p>
 <pre><code>$ cd ~/.ssh
 $ cat id_rsa.pub
-</code></pre><p>然后将输出的内容全部复制<br>进入GitHub页面-&gt;settings-&gt;SSH and GPG keys-&gt; new ssh<br>将内容复制进去即可  </p>
+</code></pre><p>然后将输出的内容<strong>全部</strong>复制<br>进入GitHub页面-&gt;settings-&gt;SSH and GPG keys-&gt; new ssh<br>将内容<strong>全部</strong>复制进去即可  </p>
 <h3 id="安装hexo的git部署"><a href="#安装hexo的git部署" class="headerlink" title="安装hexo的git部署"></a>安装hexo的git部署</h3><blockquote>
 <p>将本地hexo内容发布到GitHub仓库</p>
 </blockquote>
@@ -532,7 +532,9 @@ $ hexo d
 <h2 id="创建博文"><a href="#创建博文" class="headerlink" title="创建博文"></a>创建博文</h2><p>在<code>hexo根目录</code>下输入命令： </p>
 <pre><code>$ hexo new “文章名字”
 </code></pre><p>进入<code>hexo/source/_posts</code>目录下，就可以看到新生成的文件了<code>文章名字.md</code>  </p>
-<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><p>hexo博文编写使用markdown语法，可以下载<code>macdown</code>软件，对<code>.md</code>扩展名的文章进行编辑，详细请参阅markdown语法。</p>
+<h3 id="编写博文"><a href="#编写博文" class="headerlink" title="编写博文"></a>编写博文</h3><p>hexo博文编写使用markdown语法，可以下载<code>macdown</code>软件，对<code>.md</code>扩展名的文章进行编辑，详细请参阅markdown语法。<br>编写完成后执行命令  </p>
+<pre><code>$ hexo d -g
+</code></pre><p>几秒钟后刷新网页就可以看到更改了</p>
 
       
     </div>

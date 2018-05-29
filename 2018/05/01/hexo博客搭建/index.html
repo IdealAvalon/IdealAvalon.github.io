@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="张小全">
 <meta property="og:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-29T13:33:33.077Z">
+<meta property="og:updated_time" content="2018-05-29T13:41:21.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MacOS下的hexo个人博客搭建">
 <meta name="twitter:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
@@ -352,7 +352,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-29 21:33:33" itemprop="dateModified" datetime="2018-05-29T21:33:33+08:00">2018-05-29</time>
+                <time title="Modified: 2018-05-29 21:41:21" itemprop="dateModified" datetime="2018-05-29T21:41:21+08:00">2018-05-29</time>
               
             
           </span>
@@ -506,7 +506,9 @@ $ cat id_rsa.pub
 <pre><code>$ hexo generate
 </code></pre><p>部署到GitHub远程仓库：</p>
 <pre><code>$ hexo deploy
-</code></pre><p>或者上面两步用一个命令：</p>
+</code></pre><p>如果这里报错：拒绝链接，首先使用<code>sudo</code>执行上面的命令，如果还报错，考虑与GitHub的ssh链接有问题，可以试试以下命令：  </p>
+<pre><code>$ ssh-add ~/.ssh/id_rsa
+</code></pre><p>也就是把你的私钥添加到ssh认证中<br>或者上面两步用一个命令：</p>
 <pre><code>$ hexo d -g
 </code></pre><h2 id="公网访问博客"><a href="#公网访问博客" class="headerlink" title="公网访问博客"></a>公网访问博客</h2><p>如果上述步骤没有问题的话，就可以通过如下网址访问博客了：<br><code>http://yourname.github.io</code></p>
 <h2 id="next主题"><a href="#next主题" class="headerlink" title="next主题"></a>next主题</h2><blockquote>

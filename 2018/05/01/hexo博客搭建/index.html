@@ -109,7 +109,7 @@
 <meta property="og:site_name" content="张小全">
 <meta property="og:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T04:55:17.671Z">
+<meta property="og:updated_time" content="2018-05-29T12:49:09.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MacOS下的hexo个人博客搭建">
 <meta name="twitter:description" content="hexo博客搭建 本文从零开始搭建hexo博客，使用的系统是MacOS  内容简介  git 安装 node.js 安装 hexo 安装 github 相关使用 next主题 下载和简单设置 个人域名设置（可选） 创建博文   其中git,node.js以及GitHub是使用hexo搭建博客的基础，下面按照上述内容的顺序进行安装和操作 安装git下载并安装git，点击git官方网站自行下载和安装安">
@@ -352,7 +352,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-03 12:55:17" itemprop="dateModified" datetime="2018-05-03T12:55:17+08:00">2018-05-03</time>
+                <time title="Modified: 2018-05-29 20:49:09" itemprop="dateModified" datetime="2018-05-29T20:49:09+08:00">2018-05-29</time>
               
             
           </span>
@@ -435,8 +435,8 @@ git version 2.13.1
 v8.11.1
 </code></pre><p>可以看到返回node.js的版本信息，说明安装成功</p>
 <h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><p>上面我们安装了node.js，在这里使用node.js自带的npm工具安装hexo，只需要在终端中输入以下命令</p>
-<pre><code>npm i -g hexo
-</code></pre><p>等待安装完毕即可<br>接着输入以下命令，来测试hexo是否安装成功</p>
+<pre><code>$ npm i -g hexo
+</code></pre><p>等待安装完毕即可,如果有权限问题，在命令前加<code>sudo</code>即可<br>接着输入以下命令，来测试hexo是否安装成功</p>
 <pre><code>$ hexo -v
 hexo-cli: 1.1.0
 os: Darwin 17.5.0 darwin x64
@@ -485,9 +485,9 @@ $ hexo server
 <h3 id="配置hexo本地设置"><a href="#配置hexo本地设置" class="headerlink" title="配置hexo本地设置"></a>配置hexo本地设置</h3><p>创建好GitHub仓库后，配置本地信息，将本地hexo仓库与远程仓库进行连接<br>修改hexo根目录下的<code>_config.yml</code>文件,找到<code>deploy</code>属性设置   </p>
 <pre><code>deploy:
       type: git
-      repo: gihub: https://github.com/[yourname]/[yourname].github.io.git
+      repo: gihub:https://github.com/[yourname]/[yourname].github.io.git
       branch: master
-</code></pre><p>注意<code>.yml</code>文件有固定的格式，在<code>:</code>后要加一个空格，否则会出错  </p>
+</code></pre><p>注意<code>.yml</code>文件有固定的格式，在key的<code>:</code>后要加一个空格，否则会出错  </p>
 <h3 id="配置本地git仓库"><a href="#配置本地git仓库" class="headerlink" title="配置本地git仓库"></a>配置本地git仓库</h3><pre><code>$ git config --global user.name &quot;your name&quot;
 $ git config --global user.email &quot;your email&quot;
 </code></pre><h3 id="创建SSH"><a href="#创建SSH" class="headerlink" title="创建SSH"></a>创建SSH</h3><blockquote>
@@ -566,8 +566,8 @@ $ hexo d
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/05/01/test/" rel="prev" title="test">
-                test <i class="fa fa-chevron-right"></i>
+              <a href="/2018/05/08/MacOS下使用scrapy框架爬取百度地图POI/" rel="prev" title="MacOS下使用scrapy框架爬取百度地图POI">
+                MacOS下使用scrapy框架爬取百度地图POI <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -642,7 +642,7 @@ $ hexo d
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -661,7 +661,7 @@ $ hexo d
                     
                       
                     
-                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-count">2</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>

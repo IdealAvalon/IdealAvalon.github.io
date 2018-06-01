@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览标题！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
+<meta name="keywords" content="docker redis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用docker安装redis并设置密码">
+<meta property="og:url" content="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/index.html">
+<meta property="og:site_name" content="张小全">
+<meta property="og:description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览标题！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-01T06:07:33.146Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用docker安装redis并设置密码">
+<meta name="twitter:description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览标题！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>使用docker安装redis并设置密码 | 张小全</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/IdealAvalon/IdealAvalon.github.io/" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张小全</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhangXQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张小全">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">使用docker安装redis并设置密码
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-01 12:11:13 / Modified: 14:07:33" itemprop="dateCreated datePublished" datetime="2018-06-01T12:11:13+08:00">2018-06-01</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="使用Docker安装Redis并设置密码"><a href="#使用Docker安装Redis并设置密码" class="headerlink" title="使用Docker安装Redis并设置密码"></a>使用Docker安装Redis并设置密码</h1><blockquote>
+<p>之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码<br>文章有坑，请先浏览标题！！！</p>
+</blockquote>
+<h2 id="拉取redis镜像"><a href="#拉取redis镜像" class="headerlink" title="拉取redis镜像"></a>拉取redis镜像</h2><p>执行命令，来拉取redis镜像</p>
+<pre><code>$ docker pull redis
+</code></pre><p>默认拉取的是最新的redis镜像<br>查看拉取的镜像，以便后面根据镜像的id创建容器  </p>
+<pre><code>$ docker images
+docker.io/redis           latest              bfcb1feee2db        4 weeks ago         107 MB
+</code></pre><h2 id="创建Redis容器"><a href="#创建Redis容器" class="headerlink" title="创建Redis容器"></a>创建Redis容器</h2><p>首先创建目录，用来存储数据</p>
+<pre><code>$ mkdir -p ~/apps/redis/data
+</code></pre><p>然后进入redis目录下，并执行创建docker容器的命令</p>
+<pre><code>$ docker run -p 6379:6379 -v $PWD/data:/data  -d bfcb1feee2db redis-server --appendonly yes
+</code></pre><p>命令中的参数解释如下：</p>
+<blockquote>
+<ul>
+<li>-p 6379:6379 : 将容器的6379端口映射到主机的6379端口</li>
+<li>-d : 将容器后台运行</li>
+<li>-v $PWD/data:/data : 将主机中当前目录下的data目录挂载到容器的/data目录下</li>
+<li>redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</li>
+</ul>
+</blockquote>
+<p>如果创建成功，将会返回一大串字符串</p>
+<h2 id="进入Redis容器中设置密码"><a href="#进入Redis容器中设置密码" class="headerlink" title="进入Redis容器中设置密码"></a>进入Redis容器中设置密码</h2><p>执行命令，在docker容器中开启一个交互模式的终端</p>
+<pre><code>$ docker exec -it bfcb1feee2db bash
+</code></pre><p>命令中参数解释如下：</p>
+<blockquote>
+<ul>
+<li>-i :即使没有附加也保持STDIN 打开</li>
+<li>-t :分配一个伪终端</li>
+</ul>
+</blockquote>
+<p>在Redis容器中运行Redis客户端  </p>
+<pre><code>$ redis-cli
+</code></pre><blockquote>
+<p>上面这条命令的完全体长这样 <code>redis-cli -h 127.0.0.1 -p 6379 -a password</code><br>不加参数默认连接本地redis服务器，端口也是默认6379，默认没有密码</p>
+</blockquote>
+<p>使用命令查看当前redis服务器的密码：</p>
+<pre><code>$ 127.0.0.1:6379&gt; config get requirepass
+</code></pre><p>当然返回结果为空，然后设置密码  </p>
+<pre><code>$ 127.0.0.1:6379&gt; config set requirepass iampassword
+</code></pre><p>再次查看redis服务器的密码，就会发现有了密码</p>
+<pre><code>$ 127.0.0.1:6379&gt; config get requirepass
+1) &quot;requirepass&quot;
+2) &quot;iampassword&quot;
+</code></pre><p>退出客户端后重新登录redis客户端，来检验密码设置是否成功</p>
+<pre><code>$ 127.0.0.1:6379&gt; exit
+$ redis-cli 
+</code></pre><p>此时我们同样可以进入redis客户端，但是，执行命令会发现没有权限  </p>
+<pre><code>$ 127.0.0.1:6379&gt; keys *
+(error) NOAUTH Authentication required.
+</code></pre><p>然后再使用密码进入redis-cli</p>
+<pre><code>$ redis-cli -a iampassword
+</code></pre><blockquote>
+<p>在没有输入密码的情况下进入redis-cli，然后输入命令<code>auth iampassword</code>,也是可以获得权限的</p>
+</blockquote>
+<p>就会发现可以执行常用的命令<br><strong><em>但是</em></strong>，如果我们重启Docker容器，就会发现，<strong><em>之前设置的密码失效了！！！！</em></strong><br>引用网友的话：容器不应该是长久性的东西，要保持容器的可抛弃性，有问题就应该rm掉，数据保存在容器外，然后直接run新的容器。<br>同样的，也不应该在容器中对容器进行配置！！</p>
+<h2 id="给Docker容器设置密码的正确方式！"><a href="#给Docker容器设置密码的正确方式！" class="headerlink" title="给Docker容器设置密码的正确方式！"></a>给Docker容器设置密码的正确方式！</h2><blockquote>
+<p>接拉取镜像后的步骤</p>
+</blockquote>
+<p>在我们创建的redis目录下，创建<code>redis.conf</code>文件,然后去<a href="http://www.redis.cn/download.html" target="_blank" rel="noopener">redis官网</a>下载个压缩包，找到里面的redis.conf文件，并把里面的配置信息添加到我们的conf文件中<br>然后编辑redis.conf文件，在文件的任意位置添加一行配置：</p>
+<pre><code>requirepass iampassword
+</code></pre><p>然后启动容器：</p>
+<pre><code>docker run -p 6379:6379 --name myredis -v $PWD/redis.conf:/etc/redis/redis.conf -v $PWD/data:/data -d redis:latest redis-server /etc/redis/redis.conf --appendonly yes
+</code></pre><blockquote>
+<p>与之前启动容器不同的是，我们这里在启动容器的时候，给容器添加了配置文件，这样配置文件中的密码配置也会生效</p>
+</blockquote>
+<p>之后，你就可以按照之前测试的步骤去测试下密码了！</p>
+<h2 id="在操作过程中遇到的Error"><a href="#在操作过程中遇到的Error" class="headerlink" title="在操作过程中遇到的Error"></a>在操作过程中遇到的Error</h2><blockquote>
+<ul>
+<li>driver failed programming external connectivity on endpoint myredis</li>
+</ul>
+</blockquote>
+<p>原因：<br>在docker运行的过程中，我重启了系统的防火墙，系统防火墙关闭会清空docker防火墙的规则，这里要做一些操作，并重启docker，依次执行以下命令： </p>
+<pre><code>$ pkill docker                  # 终止进程
+$ iptables -t nat -F            # 清空nat表的所有链
+$ ifconfig docker0 down         # 停止docker默认网桥
+$ brctl delbr docker0           # 删除网桥
+$ systemctl restart docker      # 重启docker
+</code></pre><p>参考了网上的资料：<a href="https://blog.csdn.net/shida_csdn/article/details/79376761" target="_blank" rel="noopener">https://blog.csdn.net/shida_csdn/article/details/79376761</a><br>它的命令有问题，还是执行我改过的吧  </p>
+<blockquote>
+<ul>
+<li>启动docker容器后它就自动退出了，也不报错，再次启动容器也不行</li>
+</ul>
+</blockquote>
+<p>查看docker日志，发现报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@lab01 redis]# docker logs [容器id]</span><br><span class="line">*** FATAL CONFIG FILE ERROR ***</span><br><span class="line">Reading the configuration file, at line 329</span><br><span class="line">&gt;&gt;&gt; &apos;vm-enabled no&apos;</span><br><span class="line">Bad directive or wrong number of arguments</span><br></pre></td></tr></table></figure>
+<p>原因：我在网上copy的<code>redis.conf</code>文件跟我当前容器中的<code>redis版本</code>不匹配,才有了后面的索性去官网下一个原版的用</p>
+<blockquote>
+<ul>
+<li>启动docker容器后，在远程访问，不能连接</li>
+</ul>
+</blockquote>
+<p>原因：去redis.conf配置文件中查看配置，发现有个配置为<br><code>bind 127.0.0.1</code><br>从注释中了解到，这段配置，是限制远程连接的，直接把它注释掉就ok了</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/docker-redis/" rel="tag"># docker redis</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/08/MacOS下使用scrapy框架爬取百度地图POI/" rel="next" title="MacOS下使用scrapy框架爬取百度地图POI">
+                <i class="fa fa-chevron-left"></i> MacOS下使用scrapy框架爬取百度地图POI
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZhangXQ</p>
+              <p class="site-description motion-element" itemprop="description">blog.steinsgate.cc</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Docker安装Redis并设置密码"><span class="nav-number">1.</span> <span class="nav-text">使用Docker安装Redis并设置密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拉取redis镜像"><span class="nav-number">1.1.</span> <span class="nav-text">拉取redis镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Redis容器"><span class="nav-number">1.2.</span> <span class="nav-text">创建Redis容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入Redis容器中设置密码"><span class="nav-number">1.3.</span> <span class="nav-text">进入Redis容器中设置密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给Docker容器设置密码的正确方式！"><span class="nav-number">1.4.</span> <span class="nav-text">给Docker容器设置密码的正确方式！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在操作过程中遇到的Error"><span class="nav-number">1.5.</span> <span class="nav-text">在操作过程中遇到的Error</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangXQ</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

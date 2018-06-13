@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.2.0" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.2.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.2.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.2.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.2.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="SpringBoot笔记三-用户管理  thymeleaf改造页面 restful风格增删改查 一些细节问题 前后台日期类型转换 拦截器实现自动登录      前端页面找页面bootstrap官网上随便找个能做后台的页面即可：https://v3.bootcss.com/examples/dashboard/将文件名改为user_home.html 使用thymeleaf改造页面1、添加名称空间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SpringBoot笔记三-用户管理模块">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/SpringBoot笔记三-用户管理模块/index.html">
+<meta property="og:site_name" content="张小全">
+<meta property="og:description" content="SpringBoot笔记三-用户管理  thymeleaf改造页面 restful风格增删改查 一些细节问题 前后台日期类型转换 拦截器实现自动登录      前端页面找页面bootstrap官网上随便找个能做后台的页面即可：https://v3.bootcss.com/examples/dashboard/将文件名改为user_home.html 使用thymeleaf改造页面1、添加名称空间">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-06-13T16:57:18.785Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SpringBoot笔记三-用户管理模块">
+<meta name="twitter:description" content="SpringBoot笔记三-用户管理  thymeleaf改造页面 restful风格增删改查 一些细节问题 前后台日期类型转换 拦截器实现自动登录      前端页面找页面bootstrap官网上随便找个能做后台的页面即可：https://v3.bootcss.com/examples/dashboard/将文件名改为user_home.html 使用thymeleaf改造页面1、添加名称空间">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/SpringBoot笔记三-用户管理模块/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>SpringBoot笔记三-用户管理模块 | 张小全</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+	<a href="https://github.com/IdealAvalon/IdealAvalon.github.io/" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">张小全</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/SpringBoot笔记三-用户管理模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhangXQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张小全">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">SpringBoot笔记三-用户管理模块
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-06-14 00:52:05 / Modified: 00:57:18" itemprop="dateCreated datePublished" datetime="2018-06-14T00:52:05+08:00">2018-06-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/springboot/" itemprop="url" rel="index"><span itemprop="name">springboot</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="SpringBoot笔记三-用户管理"><a href="#SpringBoot笔记三-用户管理" class="headerlink" title="SpringBoot笔记三-用户管理"></a>SpringBoot笔记三-用户管理</h1><blockquote>
+<ul>
+<li>thymeleaf改造页面</li>
+<li>restful风格增删改查</li>
+<li>一些细节问题<ul>
+<li>前后台日期类型转换</li>
+<li>拦截器实现自动登录 </li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="前端页面"><a href="#前端页面" class="headerlink" title="前端页面"></a>前端页面</h2><h3 id="找页面"><a href="#找页面" class="headerlink" title="找页面"></a>找页面</h3><p>bootstrap官网上随便找个能做后台的页面即可：<br><a href="https://v3.bootcss.com/examples/dashboard/" target="_blank" rel="noopener">https://v3.bootcss.com/examples/dashboard/</a><br>将文件名改为user_home.html</p>
+<h3 id="使用thymeleaf改造页面"><a href="#使用thymeleaf改造页面" class="headerlink" title="使用thymeleaf改造页面"></a>使用thymeleaf改造页面</h3><p>1、添加名称空间  </p>
+<pre><code>&lt;html lang=&quot;zh-CN&quot;  xmlns:th=&quot;http://www.thymeleaf.org&quot;&gt;
+</code></pre><p>2、在index.html页面中添加<code>个人中心</code>按钮,如果用户不登录，则不显示</p>
+<pre><code>&lt;li&gt;&lt;a href=&quot;#&quot; th:href=&quot;@{/userHome}&quot; th:text=&quot;个人中心&quot; th:if=&quot;${session.user}!=null&quot;&gt;个人中心&lt;/a&gt;&lt;/li&gt;
+</code></pre><p>3、在MvcConfig中添加映射</p>
+<pre><code>registry.addViewController(&quot;/userHome&quot;).setViewName(&quot;/user/user_home&quot;);
+</code></pre><p>4、改造侧边栏，改造出一个用户管理标签<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Overview <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"sr-only"</span>&gt;</span>(current)<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/user&#125;"</span> &gt;</span>用户管理<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Analytics<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"#"</span>&gt;</span>Export<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>4、重启项目查看效果<br>重启之后发现效果有点问题，原因是css文件没有引入<br>在chrome中调试，将找不到的css和js等文件下载下来放到静态资源文件夹中<code>static/assets</code></p>
+<h2 id="后台编写"><a href="#后台编写" class="headerlink" title="后台编写"></a>后台编写</h2><h3 id="controller"><a href="#controller" class="headerlink" title="controller"></a>controller</h3><p>先编写一个controller，用来跳转页面</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 跳转到用户管理界面，并查询出所有用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toUserManager</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"user/user_manage"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当然，现在还没有查询用户功能<br>测试一下，可以正常跳转页面即可  </p>
+<h3 id="编写mapper文件和service文件，并改造Controller"><a href="#编写mapper文件和service文件，并改造Controller" class="headerlink" title="编写mapper文件和service文件，并改造Controller"></a>编写mapper文件和service文件，并改造Controller</h3><p>用来实现查询所有用户功能<br>mapper和service文件略<br>controller如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    <span class="keyword">private</span> UserService userService;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 跳转到用户管理界面，并查询出所有用户</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toUserManager</span><span class="params">(Model model)</span></span>&#123;</span><br><span class="line">        List&lt;User&gt; allUsers = userService.getAllUsers();</span><br><span class="line">        model.addAttribute(<span class="string">"users"</span>,allUsers);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"/user/user_manage"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="改造前台页面"><a href="#改造前台页面" class="headerlink" title="改造前台页面"></a>改造前台页面</h3><blockquote>
+<p>改造前台页面，以动态显示结果  </p>
+</blockquote>
+<h4 id="改造user表"><a href="#改造user表" class="headerlink" title="改造user表"></a>改造user表</h4><p>在改造前台页面前先改造下user表，否则真没什么可显示的字段…<br>干脆重新建张表：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`user`</span> (</span><br><span class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  <span class="string">`username`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`password`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`email`</span> <span class="built_in">varchar</span>(<span class="number">200</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`birth`</span> <span class="built_in">date</span> <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`phone`</span> <span class="built_in">varchar</span>(<span class="number">45</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  <span class="string">`gender`</span> <span class="built_in">varchar</span>(<span class="number">1</span>) <span class="built_in">CHARACTER</span> <span class="keyword">SET</span> utf8 <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</span><br><span class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</span><br><span class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> AUTO_INCREMENT=<span class="number">2</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8</span><br></pre></td></tr></table></figure>
+<p>插入数据：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`test1`</span>.<span class="string">`user`</span> (<span class="string">`id`</span>, <span class="string">`username`</span>, <span class="string">`password`</span>, <span class="string">`email`</span>, <span class="string">`birth`</span>, <span class="string">`phone`</span>, <span class="string">`gender`</span>) <span class="keyword">VALUES</span> (<span class="string">'1'</span>, <span class="string">'123'</span>, <span class="string">'123'</span>, <span class="string">'123@123.com'</span>, <span class="string">'2013/12/12'</span>, <span class="string">'19999999990'</span>, <span class="string">'0'</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="改造user类"><a href="#改造user类" class="headerlink" title="改造user类"></a>改造user类</h4><p>略<br><strong>注意</strong>，<code>birth</code>属性用<code>Date</code>类型</p>
+<h4 id="改造前端页面"><a href="#改造前端页面" class="headerlink" title="改造前端页面"></a>改造前端页面</h4><p>在thymeleaf的官方文档中找到Iteration章节，查看循环的相关使用，并改造页面<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"table-responsive"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>email<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span>&gt;</span>生日<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span>zhangsan<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.phone&#125;"</span>&gt;</span>15555555555<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.email&#125;"</span>&gt;</span>111@12333.com<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.gender&#125;=='1'?'男':'女'"</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.birth&#125;"</span>&gt;</span>2012-01-01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h4><p>到这里查找所有用户就做完了，测试一下没问题…</p>
+<h2 id="添加用户功能"><a href="#添加用户功能" class="headerlink" title="添加用户功能"></a>添加用户功能</h2><blockquote>
+<p>这个功能可能从业务上来说没啥用，因为用户都是注册的嘛。。。<br>后来觉得还是有点用，比如说帮用户修改密码</p>
+</blockquote>
+<h3 id="改造前台页面-1"><a href="#改造前台页面-1" class="headerlink" title="改造前台页面"></a>改造前台页面</h3><blockquote>
+<p>改造前台页面，添加增加员工按钮</p>
+</blockquote>
+<p>在user_manage页面中添加一个按钮，用来跳转到添加用户页面 </p>
+<pre><code>&lt;h2 &gt;&lt;a th:href=&quot;@{/user}&quot; type=&quot;button&quot; class=&quot;btn btn-lg btn-success&quot;&gt;添加用户&lt;/a&gt;&lt;/h2&gt;
+</code></pre><p>添加按钮是出了个问题，记录一下  </p>
+<pre><code>Could not parse as expression: &quot;/user&quot;   
+</code></pre><p>原因是某个<code>th:href</code>标签写错了，忘记了加<code>@{}</code>  </p>
+<p>编写UserController完成页面转发</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toUserAdd</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"user/user_add"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>新建 <code>user_add.html</code>页面,添加一个form表单，用来提交添加user的数据</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"bs-example bs-example-form"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/user&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>用户名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>手机号<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"phone"</span> <span class="attr">placeholder</span>=<span class="string">"PhoneNumber"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span>&gt;</span>Gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">th:checked</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.gender==1&#125;"</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"0"</span> <span class="attr">th:checked</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.gender==0&#125;"</span> &gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>邮箱<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"Email"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>生日<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"birth"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> &gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="后台编写-1"><a href="#后台编写-1" class="headerlink" title="后台编写"></a>后台编写</h3><p>编写UserMapper，增加addUser方法（略）<br>编写UserService，增加addUser方法（略）<br>编写UserController，完成添加用户操作与页面重定向  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 添加用户</span></span><br><span class="line"><span class="comment"> * Method: post</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@PostMapping</span>(<span class="string">"/user"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">addUser</span><span class="params">(User user)</span></span>&#123;</span><br><span class="line">    userService.addUser(user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:/users"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时，如果按上面的代码写完进行测试的话，会出错<br>原因是<strong>表单</strong>提交的<code>birth</code>属性值为<code>String</code>类型，而我们的<strong>User类</strong>中<code>birth</code>属性是<code>Date</code>类型，这里会有类型转换错误，解决方案在下面</p>
+<h3 id="一些细节操作"><a href="#一些细节操作" class="headerlink" title="一些细节操作"></a>一些细节操作</h3><h4 id="前后端时间类型不一致"><a href="#前后端时间类型不一致" class="headerlink" title="前后端时间类型不一致"></a>前后端时间类型不一致</h4><p>前台默认向后台传的日期数据为String类型，而User中的birth属性为Date类型，提交表单时会发生类型转换错误<br>解决方案，自己写一个日期类型转换器：<br>新建一个utils包，新建一个<code>StringToDateConverter.class</code>的类型转换器  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 日期类型转换器</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: Create in 18:51 2018/6/13</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringToDateConverter</span> <span class="keyword">implements</span> <span class="title">Converter</span>&lt;<span class="title">String</span>,<span class="title">Date</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String dateFormat = <span class="string">"yyyy-MM-dd HH:mm:ss"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String shortDateFormat = <span class="string">"yyyy-MM-dd"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String dateFormat2 = <span class="string">"yyyy/MM/dd HH:mm:ss"</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String shortDateFormat2 = <span class="string">"yyyy/MM/dd"</span>;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Date <span class="title">convert</span><span class="params">(String source)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (StringUtils.isEmpty(source)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        source = source.trim();</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            SimpleDateFormat formatter;</span><br><span class="line">            <span class="keyword">if</span> (source.contains(<span class="string">"-"</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (source.contains(<span class="string">":"</span>)) &#123;</span><br><span class="line">                    formatter = <span class="keyword">new</span> SimpleDateFormat(dateFormat);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    formatter = <span class="keyword">new</span> SimpleDateFormat(shortDateFormat);</span><br><span class="line">                &#125;</span><br><span class="line">                Date dtDate = formatter.parse(source);</span><br><span class="line">                <span class="keyword">return</span> dtDate;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (source.contains(<span class="string">"/"</span>)) &#123;</span><br><span class="line">                <span class="keyword">if</span> (source.contains(<span class="string">":"</span>)) &#123;</span><br><span class="line">                    formatter = <span class="keyword">new</span> SimpleDateFormat(dateFormat2);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    formatter = <span class="keyword">new</span> SimpleDateFormat(shortDateFormat2);</span><br><span class="line">                &#125;</span><br><span class="line">                Date dtDate = formatter.parse(source);</span><br><span class="line">                <span class="keyword">return</span> dtDate;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(<span class="string">"parser %s to Date fail"</span>, source));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(String.format(<span class="string">"parser %s to Date fail"</span>, source));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后将日期类型转换器添加到<code>MvcConfig.class</code>中<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 日期类型转换器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Autowired</span></span><br><span class="line"><span class="keyword">private</span> RequestMappingHandlerAdapter handlerAdapter;</span><br><span class="line"></span><br><span class="line"><span class="meta">@PostConstruct</span> <span class="comment">//spring容器初始化的时候执行该方法</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">initEditableValidation</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ConfigurableWebBindingInitializer initializer=(ConfigurableWebBindingInitializer) handlerAdapter.getWebBindingInitializer();</span><br><span class="line">    <span class="keyword">if</span> (initializer.getConversionService()!=<span class="keyword">null</span>)&#123;</span><br><span class="line">        GenericConversionService genericConversionService=(GenericConversionService) initializer.getConversionService();</span><br><span class="line">        genericConversionService.addConverter(<span class="keyword">new</span> StringToDateConverter());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>(这个解决方案是网上找的，地址忘了，侵权不删2333)</p>
+<h4 id="Tips-自动登录拦截器"><a href="#Tips-自动登录拦截器" class="headerlink" title="Tips:自动登录拦截器"></a>Tips:自动登录拦截器</h4><blockquote>
+<p>因为很多页面用到session，所以调试某些页面的时候必须先登录，这样很麻烦，可以做一个拦截器，拦截所有请求，并添加一个session，用来提供用户信息</p>
+</blockquote>
+<p>新建一个component包，然后创建一个<code>UserAutoLoginInterceptor.class</code>   </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span>: zhangdq</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>: 自动登录拦截器，用于测试时使用</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: Create in 19:31 2018/6/13</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UserAutoLoginInterceptor</span> <span class="keyword">implements</span> <span class="title">HandlerInterceptor</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Logger logger = LoggerFactory.getLogger(UserAutoLoginInterceptor.class);</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Autowired</span></span><br><span class="line">    UserService userService;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">preHandle</span><span class="params">(HttpServletRequest request, HttpServletResponse response, Object handler)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        User user = userService.getUserById(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span>(user!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            logger.debug(<span class="string">"自动登录："</span> + user.getUsername());</span><br><span class="line">            request.getSession().setAttribute(<span class="string">"user"</span>,user);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在<code>MvcConfig.class</code>中添加此拦截器  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 自定义自动登录拦截器，用于测试</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> UserAutoLoginInterceptor <span class="title">userAutoLoginInterceptor</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> UserAutoLoginInterceptor();</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addInterceptor(userAutoLoginInterceptor()).addPathPatterns(<span class="string">"/**"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意</strong>，这里必须先创建一个自定义拦截器对象，并注入到Spring容器中！！<br>如果直接在addInterceptors()方法中使用匿名对象，则会报错，错误内容是Service返回为空，一个NullPointException，这是个大坑！！<br>相对的，如果拦截器中没有注入其它对象，则使用匿名内部类是不会报错的  </p>
+<h4 id="其它的小问题"><a href="#其它的小问题" class="headerlink" title="其它的小问题"></a>其它的小问题</h4><p><code>user_manage.html</code>中<code>birth</code>显示问题,默认的日期显示格式不符合习惯，进行改造</p>
+<p>查看thymeleaf文档的<code>附录B</code>，使用thymeleaf中的日期格式化解决：</p>
+<pre><code>&lt;td th:text=&quot;${#dates.format(user.birth,&apos;yyyy-MM-dd&apos;)}&quot;&gt;2012-01-01&lt;/td&gt;
+</code></pre><h2 id="修改用户（Update操作）"><a href="#修改用户（Update操作）" class="headerlink" title="修改用户（Update操作）"></a>修改用户（Update操作）</h2><h3 id="改造前端页面-1"><a href="#改造前端页面-1" class="headerlink" title="改造前端页面"></a>改造前端页面</h3><p>在<code>user_manage.html</code>页面中添加<code>操作</code>字段</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">class</span>=<span class="string">"table table-striped"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">thead</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>ID<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>手机号<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>email<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>性别<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>生日<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>操作<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">thead</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tbody</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">tr</span> <span class="attr">th:each</span>=<span class="string">"user:$&#123;users&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.id&#125;"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.username&#125;"</span>&gt;</span>zhangsan<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.phone&#125;"</span>&gt;</span>15555555555<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.email&#125;"</span>&gt;</span>111@12333.com<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user.gender&#125;=='1'?'男':'女'"</span>&gt;</span>男<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">th:text</span>=<span class="string">"$&#123;#dates.format(user.birth,'yyyy-MM-dd')&#125;"</span>&gt;</span>2012-01-01<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"btn btn-sm btn-primary"</span> <span class="attr">th:href</span>=<span class="string">"@&#123;/user/&#125; + $&#123;user.id&#125;"</span>&gt;</span>编辑<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 这里提前写了删除按钮 --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span>  <span class="attr">class</span>=<span class="string">"btn btn-sm btn-danger deleteBtn"</span>&gt;</span>删除<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">tbody</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="编写Controller"><a href="#编写Controller" class="headerlink" title="编写Controller"></a>编写Controller</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 跳转到修改用户信息页面</span></span><br><span class="line"><span class="comment"> * 这里重用user_add.html页面</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@GetMapping</span>(<span class="string">"/user/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">toUpdateUser</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span> Integer id, Model model)</span>&#123;</span><br><span class="line">    User user = userService.getUserById(id);</span><br><span class="line">    model.addAttribute(<span class="string">"user"</span>,user);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"user/user_add"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="继续改造user-add-html页面"><a href="#继续改造user-add-html页面" class="headerlink" title="继续改造user_add.html页面"></a>继续改造user_add.html页面</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">class</span>=<span class="string">"bs-example bs-example-form"</span> <span class="attr">th:action</span>=<span class="string">"@&#123;/user&#125;"</span> <span class="attr">method</span>=<span class="string">"post"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 判断user是否为空，如果不为空，则是修改页面，要使用put方式提交，mane的写法是固定的 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"_method"</span> <span class="attr">th:value</span>=<span class="string">"put"</span> <span class="attr">th:if</span>=<span class="string">"$&#123;user&#125;!=null"</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 添加一个隐藏的input标签，来携带id信息 --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"hidden"</span> <span class="attr">name</span>=<span class="string">"id"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user.id&#125;"</span> <span class="attr">th:if</span>=<span class="string">"$&#123;user&#125;!=null"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>用户名<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.username&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>密码<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!-- 生产环境中，即使是管理员，偷看用户的密码也是不允许的啊，喂！ --&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"password"</span> <span class="attr">placeholder</span>=<span class="string">"Password"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.password&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>手机号<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"phone"</span> <span class="attr">placeholder</span>=<span class="string">"PhoneNumber"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.phone&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">label</span>&gt;</span>Gender<span class="tag">&lt;/<span class="name">label</span>&gt;</span><span class="tag">&lt;<span class="name">br</span>/&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"1"</span> <span class="attr">th:checked</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.gender&#125;==1"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span>&gt;</span>男<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"form-check form-check-inline"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"form-check-input"</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">name</span>=<span class="string">"gender"</span> <span class="attr">value</span>=<span class="string">"0"</span> <span class="attr">th:checked</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.gender&#125;==0"</span> &gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"form-check-label"</span>&gt;</span>女<span class="tag">&lt;/<span class="name">label</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>邮箱<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"email"</span> <span class="attr">placeholder</span>=<span class="string">"Email"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;user.email&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"input-group"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"input-group-addon"</span> &gt;</span>生日<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"date"</span> <span class="attr">class</span>=<span class="string">"form-control"</span> <span class="attr">name</span>=<span class="string">"birth"</span> <span class="attr">placeholder</span>=<span class="string">"Username"</span> <span class="attr">aria-describedby</span>=<span class="string">"basic-addon1"</span> <span class="attr">th:value</span>=<span class="string">"$&#123;user&#125;!=null?$&#123;#dates.format(user.username,'yyyy-MM-dd')&#125;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">class</span>=<span class="string">"btn btn-primary"</span> <span class="attr">th:text</span>=<span class="string">"$&#123;user&#125;!=null?'保存':'添加'"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>主要改了这么几个东西：</p>
+<blockquote>
+<ul>
+<li>添加了一个隐藏的input标签，用来判断并改变提交的方式  </li>
+<li>在每个input标签中判断了以下有没有信息要显示  <ul>
+<li>需要注意的是<code>性别</code>那里<code>select</code>标签的写法</li>
+</ul>
+</li>
+<li>最后，给 保存/添加 做一下判断</li>
+</ul>
+</blockquote>
+<h2 id="删除用户（delete操作）"><a href="#删除用户（delete操作）" class="headerlink" title="删除用户（delete操作）"></a>删除用户（delete操作）</h2><h4 id="修改删除按钮"><a href="#修改删除按钮" class="headerlink" title="修改删除按钮"></a>修改删除按钮</h4><pre><code>&lt;a th:attr=&quot;del_uri=@{/user/}+${user.id}&quot; class=&quot;btn btn-sm btn-danger deleteBtn&quot;&gt;删除&lt;/a&gt;
+</code></pre><blockquote>
+<ul>
+<li>查看thymeleaf文档关于attribute的部分，有自定义属性的格式，这里我们拼接删除请求的地址</li>
+</ul>
+</blockquote>
+<p>因为删除请求需要提交，这里我们用一个表单来提交请求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 用来提交delete请求 --&gt;</span><br><span class="line">&lt;!--就算是要写delete、put方式的请求，form表单中一定也要加上method=&quot;post&quot;--&gt;</span><br><span class="line">&lt;form id=&quot;deleteUserForm&quot; method=&quot;post&quot;&gt;</span><br><span class="line">    &lt;input type=&quot;hidden&quot; name=&quot;_method&quot; value=&quot;delete&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><strong>注意</strong>，这个表单是写在<code>th:each</code>循环外面的，如果写在里面就会产生很多个form表单，严重影响效率和用户体验</li>
+</ul>
+</blockquote>
+<p>然后写一个script标签来提交请求<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">    &lt;!-- 使用类选择器，给所有的<span class="keyword">delete</span>按钮绑定单击事件 --&gt;</span><br><span class="line">    $(<span class="string">".deleteBtn"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        &lt;!-- 给form表单添加一个action属性，并提交 --&gt;</span><br><span class="line">        $(<span class="string">"#deleteUserForm"</span>).attr(<span class="string">"action"</span>,$(<span class="keyword">this</span>).attr(<span class="string">"del_uri"</span>)).submit()</span><br><span class="line">    &#125;)</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<ul>
+<li>这里需要注意的是，如果你的jquery.js是在body最后引入的，那么这段js代码一定要放在jquery标签的后面，否则不起作用！！其他的script标签同理</li>
+</ul>
+</blockquote>
+<h4 id="删除操作的后台编写"><a href="#删除操作的后台编写" class="headerlink" title="删除操作的后台编写"></a>删除操作的后台编写</h4><p>后台编写就很简单了，只放一个controller  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 删除用户信息</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> id</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@DeleteMapping</span>(<span class="string">"/user/&#123;id&#125;"</span>)</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">deleteUser</span><span class="params">(@PathVariable(<span class="string">"id"</span>)</span>Integer id)</span>&#123;</span><br><span class="line">    userService.deleteUser(id);</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"redirect:/users"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>到这里，restful的增删改查操作就算基本完成了<br>后面会对这个用户管理模块进行一些优化：  </p>
+<blockquote>
+<ul>
+<li>使用thymeleaf进行公共页面抽取</li>
+<li>mybatis分页工具对查询出的用户进行分页</li>
+<li>在用户管理界面中增加搜索用户的功能</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/11/SpringBoot笔记二-登录案例/" rel="next" title="SpringBoot笔记二-登录案例">
+                <i class="fa fa-chevron-left"></i> SpringBoot笔记二-登录案例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">ZhangXQ</p>
+              <p class="site-description motion-element" itemprop="description">blog.steinsgate.cc</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SpringBoot笔记三-用户管理"><span class="nav-number">1.</span> <span class="nav-text">SpringBoot笔记三-用户管理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#前端页面"><span class="nav-number">1.1.</span> <span class="nav-text">前端页面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#找页面"><span class="nav-number">1.1.1.</span> <span class="nav-text">找页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用thymeleaf改造页面"><span class="nav-number">1.1.2.</span> <span class="nav-text">使用thymeleaf改造页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后台编写"><span class="nav-number">1.2.</span> <span class="nav-text">后台编写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#controller"><span class="nav-number">1.2.1.</span> <span class="nav-text">controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写mapper文件和service文件，并改造Controller"><span class="nav-number">1.2.2.</span> <span class="nav-text">编写mapper文件和service文件，并改造Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#改造前台页面"><span class="nav-number">1.2.3.</span> <span class="nav-text">改造前台页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#改造user表"><span class="nav-number">1.2.3.1.</span> <span class="nav-text">改造user表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改造user类"><span class="nav-number">1.2.3.2.</span> <span class="nav-text">改造user类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#改造前端页面"><span class="nav-number">1.2.3.3.</span> <span class="nav-text">改造前端页面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#测试"><span class="nav-number">1.2.3.4.</span> <span class="nav-text">测试</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加用户功能"><span class="nav-number">1.3.</span> <span class="nav-text">添加用户功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改造前台页面-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">改造前台页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台编写-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">后台编写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#一些细节操作"><span class="nav-number">1.3.3.</span> <span class="nav-text">一些细节操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#前后端时间类型不一致"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">前后端时间类型不一致</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tips-自动登录拦截器"><span class="nav-number">1.3.3.2.</span> <span class="nav-text">Tips:自动登录拦截器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其它的小问题"><span class="nav-number">1.3.3.3.</span> <span class="nav-text">其它的小问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改用户（Update操作）"><span class="nav-number">1.4.</span> <span class="nav-text">修改用户（Update操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#改造前端页面-1"><span class="nav-number">1.4.1.</span> <span class="nav-text">改造前端页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#编写Controller"><span class="nav-number">1.4.2.</span> <span class="nav-text">编写Controller</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#继续改造user-add-html页面"><span class="nav-number">1.4.3.</span> <span class="nav-text">继续改造user_add.html页面</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除用户（delete操作）"><span class="nav-number">1.5.</span> <span class="nav-text">删除用户（delete操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改删除按钮"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">修改删除按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除操作的后台编写"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">删除操作的后台编写</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ZhangXQ</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Gemini</a> v6.2.0</div>
+
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv" title="Total Visitors">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="site-pv" title="Total Views">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.2.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.2.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.2.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.2.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

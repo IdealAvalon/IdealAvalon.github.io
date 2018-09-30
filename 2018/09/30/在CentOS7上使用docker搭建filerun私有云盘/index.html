@@ -102,24 +102,24 @@
 
 
 
-  <meta name="description" content="blog.steinsgate.cc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="about">
-<meta property="og:url" content="http://yoursite.com/about/index.html">
+  <meta name="description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在CentOS7上使用docker搭建filerun私有云盘">
+<meta property="og:url" content="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/index.html">
 <meta property="og:site_name" content="张小全">
-<meta property="og:description" content="blog.steinsgate.cc">
+<meta property="og:description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-03T09:48:12.487Z">
+<meta property="og:updated_time" content="2018-09-30T06:26:17.227Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="about">
-<meta name="twitter:description" content="blog.steinsgate.cc">
+<meta name="twitter:title" content="在CentOS7上使用docker搭建filerun私有云盘">
+<meta name="twitter:description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/about/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/"/>
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>about | 张小全</title>
+  <title>在CentOS7上使用docker搭建filerun私有云盘 | 张小全</title>
   
 
 
@@ -224,7 +224,7 @@
         
         
           
-          <li class="menu-item menu-item-about menu-item-active">
+          <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
   </li>
@@ -273,68 +273,221 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="ZhangXQ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="张小全">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">about</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">在CentOS7上使用docker搭建filerun私有云盘
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-30 14:23:59 / Modified: 14:26:17" itemprop="dateCreated datePublished" datetime="2018-09-30T14:23:59+08:00">2018-09-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-      </div>
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <blockquote>
+<p>由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等</p>
+</blockquote>
+<blockquote>
+<p>这里选择使用docker搭建，简直不能再方便</p>
+</blockquote>
+<h2 id="查找安装filerun镜像"><a href="#查找安装filerun镜像" class="headerlink" title="查找安装filerun镜像"></a>查找安装filerun镜像</h2><p>在<a href="store.docker.com">docker仓库</a>中搜索<code>filerun</code>，会有很多镜像，这里选择了<code>jaegerdocker/pan</code>这个镜像，里面的教程还是比较详细的。</p>
+<p>首先创建文件夹来存储容器数据</p>
+<pre><code>$ mkdir /root/apps/docker_software/filerun
+</code></pre><p>然后就是拉取镜像、创建容器等操作，依次执行下面的命令：</p>
+<pre><code>$ docker pull jaegerdocker/pan
+$ docker run --name=pan -v /root/apps/docker_software/filerun/data/pan:/var/www/html/system/data/default_home_folder  -dti -p 8081:80 -p 6800:6800 jaegerdocker/pan
+</code></pre><p>使用命令查看容器是否启动成功:</p>
+<pre><code>$ docker ps
+</code></pre><h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>设置防火墙，开放8081和6800端口</p>
+<pre><code class="bash">$ firewall-cmd --add-port=8081/tcp --permanent
+$ firewall-cmd --add-port=6800/tcp --permanent
+</code></pre>
+<p>不要忘了把阿里云的防火墙相同端口也开放</p>
+<h2 id="设置文件权限"><a href="#设置文件权限" class="headerlink" title="设置文件权限"></a>设置文件权限</h2><p>如果访问IP:8081出现数据库错误，则执行下面命令：<br>进入docker容器：</p>
+<pre><code>$ docker exec -it pan bash
+</code></pre><p>在容器中执行下面命令：</p>
+<pre><code>chown -R mysql /var/lib/mysql
+chgrp -R mysql /var/lib/mysql
+</code></pre><p>然后重启容器：</p>
+<pre><code>$ docker restart pan
+</code></pre><p>经过上面的步骤之后，在浏览器中应该是可以访问页面了，网盘地址为：</p>
+<pre><code>IP:8081
+</code></pre><p>用户名和密码默认都是：<code>superuser</code></p>
+<p>但是我们可能会发现，并不能上传文件或者是创建文件夹，因为/www目录下没有写入权限，要再次进入docker容器中，执行下面的命令：</p>
+<pre><code>chown -R www-data:www-data /var/www/html/system/data/default_home_folder
+</code></pre><p>然后再次重启容器，应该就好了</p>
+<p>这里只介绍filerun的安装，其实这个镜像中还自带了aria2，有兴趣的可以去作者的docker镜像页面查看，地址在参考资料中</p>
+<p>参考资料<br>[1] <a href="https://store.docker.com/community/images/jaegerdocker/pan" target="_blank" rel="noopener">jaegerdocker/pan docker仓库</a><br>[2] <a href="https://stackoverflow.com/questions/20127884/runtimeexception-unable-to-create-the-cache-directory-var-www-sonata-app-cach" target="_blank" rel="noopener">stackoverflow中关于/www目录权限问题</a></p>
+
       
     </div>
+
     
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/29/CentOS7-搭建远程jupyter服务器版/" rel="next" title="CentOS7 搭建远程jupyter服务器版">
+                <i class="fa fa-chevron-left"></i> CentOS7 搭建远程jupyter服务器版
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
 
-    
-    
-    
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -364,8 +517,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -444,6 +606,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找安装filerun镜像"><span class="nav-number">1.</span> <span class="nav-text">查找安装filerun镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙设置"><span class="nav-number">2.</span> <span class="nav-text">防火墙设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文件权限"><span class="nav-number">3.</span> <span class="nav-text">设置文件权限</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -102,24 +102,24 @@
 
 
 
-  <meta name="description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
+  <meta name="description" content="基本散点图12345678910111213141516171819202122232425import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inlinefrom bokeh.plotting import figure, showfrom bokeh.io import output_">
 <meta property="og:type" content="article">
-<meta property="og:title" content="在CentOS7上使用docker搭建filerun私有云盘">
-<meta property="og:url" content="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/index.html">
+<meta property="og:title" content="Bokeh绘图笔记二-散点图">
+<meta property="og:url" content="http://yoursite.com/2019/01/03/Bokeh绘图笔记二-散点图/index.html">
 <meta property="og:site_name" content="张小全">
-<meta property="og:description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
+<meta property="og:description" content="基本散点图12345678910111213141516171819202122232425import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inlinefrom bokeh.plotting import figure, showfrom bokeh.io import output_">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-30T06:26:17.227Z">
+<meta property="og:updated_time" content="2019-01-03T14:04:19.259Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="在CentOS7上使用docker搭建filerun私有云盘">
-<meta name="twitter:description" content="由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等   这里选择使用docker搭建，简直不能再方便  查找安装filerun镜像在docker仓库中搜索filerun，会有很多镜像，这里选择了jaegerdocker/pan这个镜像，里面的教程还是比较详">
+<meta name="twitter:title" content="Bokeh绘图笔记二-散点图">
+<meta name="twitter:description" content="基本散点图12345678910111213141516171819202122232425import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inlinefrom bokeh.plotting import figure, showfrom bokeh.io import output_">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/03/Bokeh绘图笔记二-散点图/"/>
 
 
 
@@ -129,7 +129,7 @@
   };
 </script>
 
-  <title>在CentOS7上使用docker搭建filerun私有云盘 | 张小全</title>
+  <title>Bokeh绘图笔记二-散点图 | 张小全</title>
   
 
 
@@ -293,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/30/在CentOS7上使用docker搭建filerun私有云盘/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/03/Bokeh绘图笔记二-散点图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhangXQ">
@@ -310,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">在CentOS7上使用docker搭建filerun私有云盘
+          <h1 class="post-title" itemprop="name headline">Bokeh绘图笔记二-散点图
               
             
           </h1>
@@ -335,7 +335,7 @@
                 
               
 
-              <time title="Created: 2018-09-30 14:23:59 / Modified: 14:26:17" itemprop="dateCreated datePublished" datetime="2018-09-30T14:23:59+08:00">2018-09-30</time>
+              <time title="Created: 2019-01-03 20:54:54 / Modified: 22:04:19" itemprop="dateCreated datePublished" datetime="2019-01-03T20:54:54+08:00">2019-01-03</time>
             
 
             
@@ -357,7 +357,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
@@ -399,40 +399,25 @@
       
 
       
-        <blockquote>
-<p>由于实验室和寝室两台电脑都在使用，文件共享很不方便，百度云限速又很恶心，所以就在服务器上搭建了filerun私有云盘，只传些小文档，还是很方便的，如果想存储大文件，可以搭建到路由器上，接硬盘等</p>
-</blockquote>
+        <h2 id="基本散点图"><a href="#基本散点图" class="headerlink" title="基本散点图"></a>基本散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">% matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> bokeh.plotting <span class="keyword">import</span> figure, show</span><br><span class="line"><span class="keyword">from</span> bokeh.io <span class="keyword">import</span> output_notebook</span><br><span class="line">output_notebook()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 散点图</span></span><br><span class="line"><span class="comment"># 一、绘制普通散点图</span></span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">80</span>))</span><br><span class="line"></span><br><span class="line">p = figure(plot_width = <span class="number">600</span>, height = <span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">p.circle(s.index, s.values,</span><br><span class="line">        size = <span class="number">25</span>, color = <span class="string">'navy'</span>, alpha = <span class="number">0.3</span>,</span><br><span class="line">        fill_color = <span class="string">'red'</span>, fill_alpha = <span class="number">0.5</span>,  </span><br><span class="line">        line_color = <span class="string">'black'</span>, line_alpha = <span class="number">0.9</span>, line_dash = <span class="string">'dashed'</span>, line_width = <span class="number">1</span>,   <span class="comment"># 点边线的颜色、透明度、样式和宽度</span></span><br><span class="line">        legend = <span class="string">'scatter-dircle'</span>)   <span class="comment"># 图例</span></span><br><span class="line"></span><br><span class="line">p.legend.location = <span class="string">'top_left'</span>   <span class="comment"># 图例位置</span></span><br><span class="line"></span><br><span class="line">show(p)</span><br></pre></td></tr></table></figure>
+<h2 id="绘制大小不同、颜色不同的散点图"><a href="#绘制大小不同、颜色不同的散点图" class="headerlink" title="绘制大小不同、颜色不同的散点图"></a>绘制大小不同、颜色不同的散点图</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 二、绘制点大小不同的散点图</span></span><br><span class="line"><span class="comment"># 导入调色盘模块</span></span><br><span class="line"><span class="keyword">from</span> bokeh.palettes <span class="keyword">import</span> brewer</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建随机数据</span></span><br><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">df = pd.DataFrame(rng.randn(<span class="number">100</span>,<span class="number">2</span>)*<span class="number">100</span>, columns = [<span class="string">'A'</span>,<span class="string">'B'</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置一个表示点大小的字段</span></span><br><span class="line">df[<span class="string">'size'</span>] = rng.randint(<span class="number">10</span>,<span class="number">30</span>,<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置一个表示点颜色的字段</span></span><br><span class="line"><span class="comment"># 先设置一个调色盘</span></span><br><span class="line">n = <span class="number">9</span> <span class="comment"># 选择渐变效果，也就是9种不同深浅的颜色</span></span><br><span class="line">colormap = brewer[<span class="string">'Blues'</span>][n] <span class="comment"># 蓝色渐变调色盘</span></span><br><span class="line">df[<span class="string">'color'</span>] = [colormap[x] <span class="keyword">for</span> x <span class="keyword">in</span> rng.randint(<span class="number">0</span>,n,<span class="number">100</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘图</span></span><br><span class="line">p = figure(plot_width = <span class="number">600</span>, height = <span class="number">400</span>)</span><br><span class="line"></span><br><span class="line">p.circle(df[<span class="string">'A'</span>],df[<span class="string">'B'</span>],</span><br><span class="line">        line_color = <span class="string">'white'</span>,</span><br><span class="line">        fill_color = df[<span class="string">'color'</span>],fill_alpha = <span class="number">0.6</span>,</span><br><span class="line">        size = df[<span class="string">'size'</span>])</span><br><span class="line"></span><br><span class="line">show(p)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>这里选择使用docker搭建，简直不能再方便</p>
+<ul>
+<li>关于这个调色盘，先不要看n这个变量，因为n是根据brewer[colormap]中的参数colormap来的</li>
+<li>brewer中的参数，从<a href="http://bokeh.pydata.org/en/latest/docs/reference/palettes.html" target="_blank" rel="noopener">官方手册</a>中可以查看，同时也可以看到n的取值范围，也就是给的图例左边的数字,这里，我们使用<code>Blues</code>蓝色渐变调色盘，从手册中可以看到取值范围为<code>3-9</code></li>
+</ul>
 </blockquote>
-<h2 id="查找安装filerun镜像"><a href="#查找安装filerun镜像" class="headerlink" title="查找安装filerun镜像"></a>查找安装filerun镜像</h2><p>在<a href="store.docker.com">docker仓库</a>中搜索<code>filerun</code>，会有很多镜像，这里选择了<code>jaegerdocker/pan</code>这个镜像，里面的教程还是比较详细的。</p>
-<p>首先创建文件夹来存储容器数据</p>
-<pre><code>$ mkdir /root/apps/docker_software/filerun
-</code></pre><p>然后就是拉取镜像、创建容器等操作，依次执行下面的命令：</p>
-<pre><code>$ docker pull jaegerdocker/pan
-$ docker run --name=pan -v /root/apps/docker_software/filerun/data/pan:/var/www/html/system/data/default_home_folder  -dti -p 8081:80 -p 6800:6800 jaegerdocker/pan
-</code></pre><p>使用命令查看容器是否启动成功:</p>
-<pre><code>$ docker ps
-</code></pre><h2 id="防火墙设置"><a href="#防火墙设置" class="headerlink" title="防火墙设置"></a>防火墙设置</h2><p>设置防火墙，开放8081和6800端口</p>
-<pre><code class="bash">$ firewall-cmd --add-port=8081/tcp --permanent
-$ firewall-cmd --add-port=6800/tcp --permanent
-</code></pre>
-<p>不要忘了把阿里云的防火墙相同端口也开放</p>
-<h2 id="设置文件权限"><a href="#设置文件权限" class="headerlink" title="设置文件权限"></a>设置文件权限</h2><p>如果访问IP:8081出现数据库错误，则执行下面命令：<br>进入docker容器：</p>
-<pre><code>$ docker exec -it pan bash
-</code></pre><p>在容器中执行下面命令：</p>
-<pre><code>chown -R mysql /var/lib/mysql
-chgrp -R mysql /var/lib/mysql
-</code></pre><p>然后重启容器：</p>
-<pre><code>$ docker restart pan
-</code></pre><p>经过上面的步骤之后，在浏览器中应该是可以访问页面了，网盘地址为：</p>
-<pre><code>IP:8081
-</code></pre><p>用户名和密码默认都是：<code>superuser</code></p>
-<p>但是我们可能会发现，并不能上传文件或者是创建文件夹，因为/www目录下没有写入权限，要再次进入docker容器中，执行下面的命令：</p>
-<pre><code>chown -R www-data:www-data /var/www/html/system/data/default_home_folder
-</code></pre><p>然后再次重启容器，应该就好了</p>
-<p>这里只介绍filerun的安装，其实这个镜像中还自带了aria2，有兴趣的可以去作者的docker镜像页面查看，地址在参考资料中</p>
-<p>参考资料<br>[1] <a href="https://store.docker.com/community/images/jaegerdocker/pan" target="_blank" rel="noopener">jaegerdocker/pan docker仓库</a><br>[2] <a href="https://stackoverflow.com/questions/20127884/runtimeexception-unable-to-create-the-cache-directory-var-www-sonata-app-cach" target="_blank" rel="noopener">stackoverflow中关于/www目录权限问题</a></p>
+<h2 id="绘制分类散点图"><a href="#绘制分类散点图" class="headerlink" title="绘制分类散点图"></a>绘制分类散点图</h2><blockquote>
+<p>实际上是根据数据的类别绘制多个散点图叠加起来</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘制不同分类的散点图</span></span><br><span class="line"><span class="keyword">from</span> bokeh.palettes <span class="keyword">import</span> d3</span><br><span class="line"><span class="keyword">import</span> warnings</span><br><span class="line">warnings.filterwarnings(<span class="string">'ignore'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建随机数据</span></span><br><span class="line">rng = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">df = pd.DataFrame(rng.randn(<span class="number">100</span>,<span class="number">2</span>)*<span class="number">100</span>, columns = [<span class="string">'A'</span>,<span class="string">'B'</span>])</span><br><span class="line"><span class="comment"># 设置分类字段</span></span><br><span class="line">df[<span class="string">'type'</span>] = rng.randint(<span class="number">0</span>,<span class="number">3</span>,<span class="number">100</span>)</span><br><span class="line"></span><br><span class="line">colormap = d3[<span class="string">'Category20'</span>][<span class="number">3</span>]</span><br><span class="line"></span><br><span class="line">p = figure(width = <span class="number">600</span>, height = <span class="number">400</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> df[<span class="string">'type'</span>].unique():</span><br><span class="line">    p.circle(df.index, df[<span class="string">'A'</span>][df[<span class="string">'type'</span>] == t],</span><br><span class="line">            size = <span class="number">20</span>, alpha = <span class="number">0.8</span>,</span><br><span class="line">            color = colormap[t])</span><br><span class="line">show(p)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>这里压制了警告，不压制的话会弹出没什么卵用的警告</li>
+<li>这里换了个调色盘，<a href="http://bokeh.pydata.org/en/latest/docs/reference/palettes.html" target="_blank" rel="noopener">官方手册</a>有好几个调色盘，大家可以自己去看</li>
+</ul>
+</blockquote>
+<p>关于散点图的绘制就到这里了</p>
 
       
     </div>
@@ -460,8 +445,8 @@ chgrp -R mysql /var/lib/mysql
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/09/29/CentOS7-搭建远程jupyter服务器版/" rel="next" title="CentOS7 搭建远程jupyter服务器版">
-                <i class="fa fa-chevron-left"></i> CentOS7 搭建远程jupyter服务器版
+              <a href="/2019/01/03/Bokeh绘图笔记一_模块导入与基本参数设置/" rel="next" title="Bokeh绘图笔记一_模块导入与基本参数设置">
+                <i class="fa fa-chevron-left"></i> Bokeh绘图笔记一_模块导入与基本参数设置
               </a>
             
           </div>
@@ -469,10 +454,6 @@ chgrp -R mysql /var/lib/mysql
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/03/Bokeh绘图笔记一_模块导入与基本参数设置/" rel="prev" title="Bokeh绘图笔记一_模块导入与基本参数设置">
-                Bokeh绘图笔记一_模块导入与基本参数设置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -620,7 +601,7 @@ chgrp -R mysql /var/lib/mysql
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#查找安装filerun镜像"><span class="nav-number">1.</span> <span class="nav-text">查找安装filerun镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#防火墙设置"><span class="nav-number">2.</span> <span class="nav-text">防火墙设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置文件权限"><span class="nav-number">3.</span> <span class="nav-text">设置文件权限</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本散点图"><span class="nav-number">1.</span> <span class="nav-text">基本散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制大小不同、颜色不同的散点图"><span class="nav-number">2.</span> <span class="nav-text">绘制大小不同、颜色不同的散点图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#绘制分类散点图"><span class="nav-number">3.</span> <span class="nav-text">绘制分类散点图</span></a></li></ol></div>
             
 
           </div>

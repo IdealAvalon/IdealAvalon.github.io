@@ -102,25 +102,24 @@
 
 
 
-  <meta name="description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览全文！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
-<meta name="keywords" content="docker redis">
+  <meta name="description" content="ToolBar和图表隐藏 因为图表隐藏只有一条语句p.legend.click_policy=&amp;quot;hide&amp;quot;，所以混到这里了  12345678910111213141516171819202122232425262728# 创建数据x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]y0 = [10**i for i in x]y1 = [10**(i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用docker安装redis并设置密码">
-<meta property="og:url" content="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/index.html">
+<meta property="og:title" content="Bokeh绘图笔记四-ToolBar、图表隐藏和分页">
+<meta property="og:url" content="http://yoursite.com/2019/01/06/Bokeh绘图笔记四-ToolBar、图表隐藏和分页/index.html">
 <meta property="og:site_name" content="张小全">
-<meta property="og:description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览全文！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
+<meta property="og:description" content="ToolBar和图表隐藏 因为图表隐藏只有一条语句p.legend.click_policy=&amp;quot;hide&amp;quot;，所以混到这里了  12345678910111213141516171819202122232425262728# 创建数据x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]y0 = [10**i for i in x]y1 = [10**(i">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-01T06:11:06.028Z">
+<meta property="og:updated_time" content="2019-01-06T07:40:25.469Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用docker安装redis并设置密码">
-<meta name="twitter:description" content="使用Docker安装Redis并设置密码 之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码文章有坑，请先浏览全文！！！  拉取redis镜像执行命令，来拉取redis镜像 $ docker pull redis 默认拉取的是最新的redis镜像查看拉取的镜像，以便后面根据镜像的id创建容器   $ docker image">
+<meta name="twitter:title" content="Bokeh绘图笔记四-ToolBar、图表隐藏和分页">
+<meta name="twitter:description" content="ToolBar和图表隐藏 因为图表隐藏只有一条语句p.legend.click_policy=&amp;quot;hide&amp;quot;，所以混到这里了  12345678910111213141516171819202122232425262728# 创建数据x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]y0 = [10**i for i in x]y1 = [10**(i">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/06/Bokeh绘图笔记四-ToolBar、图表隐藏和分页/"/>
 
 
 
@@ -130,7 +129,7 @@
   };
 </script>
 
-  <title>使用docker安装redis并设置密码 | 张小全</title>
+  <title>Bokeh绘图笔记四-ToolBar、图表隐藏和分页 | 张小全</title>
   
 
 
@@ -294,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/使用docker安装redis并设置密码/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/06/Bokeh绘图笔记四-ToolBar、图表隐藏和分页/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhangXQ">
@@ -311,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用docker安装redis并设置密码
+          <h1 class="post-title" itemprop="name headline">Bokeh绘图笔记四-ToolBar、图表隐藏和分页
               
             
           </h1>
@@ -336,7 +335,7 @@
                 
               
 
-              <time title="Created: 2018-06-01 12:11:13 / Modified: 14:11:06" itemprop="dateCreated datePublished" datetime="2018-06-01T12:11:13+08:00">2018-06-01</time>
+              <time title="Created: 2019-01-06 15:33:28 / Modified: 15:40:25" itemprop="dateCreated datePublished" datetime="2019-01-06T15:33:28+08:00">2019-01-06</time>
             
 
             
@@ -358,7 +357,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/docker/" itemprop="url" rel="index"><span itemprop="name">docker</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
@@ -400,100 +399,34 @@
       
 
       
-        <h1 id="使用Docker安装Redis并设置密码"><a href="#使用Docker安装Redis并设置密码" class="headerlink" title="使用Docker安装Redis并设置密码"></a>使用Docker安装Redis并设置密码</h1><blockquote>
-<p>之前在阿里云服务器上搭建了redis数据库，由于只是测试用，就没有上密码，结果居然被人执行了恶意代码，所以就干脆的设置了密码<br>文章有坑，请先浏览全文！！！</p>
+        <h2 id="ToolBar和图表隐藏"><a href="#ToolBar和图表隐藏" class="headerlink" title="ToolBar和图表隐藏"></a>ToolBar和图表隐藏</h2><blockquote>
+<p>因为图表隐藏只有一条语句<code>p.legend.click_policy=&quot;hide&quot;</code>，所以混到这里了</p>
 </blockquote>
-<h2 id="拉取redis镜像"><a href="#拉取redis镜像" class="headerlink" title="拉取redis镜像"></a>拉取redis镜像</h2><p>执行命令，来拉取redis镜像</p>
-<pre><code>$ docker pull redis
-</code></pre><p>默认拉取的是最新的redis镜像<br>查看拉取的镜像，以便后面根据镜像的id创建容器  </p>
-<pre><code>$ docker images
-docker.io/redis           latest              bfcb1feee2db        4 weeks ago         107 MB
-</code></pre><h2 id="创建Redis容器"><a href="#创建Redis容器" class="headerlink" title="创建Redis容器"></a>创建Redis容器</h2><p>首先创建目录，用来存储数据</p>
-<pre><code>$ mkdir -p ~/apps/redis/data
-</code></pre><p>然后进入redis目录下，并执行创建docker容器的命令</p>
-<pre><code>$ docker run -p 6379:6379 -v $PWD/data:/data  -d bfcb1feee2db redis-server --appendonly yes
-</code></pre><p>命令中的参数解释如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建数据</span></span><br><span class="line">x = [<span class="number">0.1</span>, <span class="number">0.5</span>, <span class="number">1.0</span>, <span class="number">1.5</span>, <span class="number">2.0</span>, <span class="number">2.5</span>, <span class="number">3.0</span>]</span><br><span class="line">y0 = [<span class="number">10</span>**i <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line">y1 = [<span class="number">10</span>**(i**<span class="number">2</span>) <span class="keyword">for</span> i <span class="keyword">in</span> x]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = figure(</span><br><span class="line">    width = <span class="number">600</span>, height = <span class="number">400</span>,</span><br><span class="line">    tools = <span class="string">'pan, box_zoom, reset, save, crosshair'</span>, <span class="comment"># 最后一个为十字光标</span></span><br><span class="line">    toolbar_location = <span class="string">'above'</span>, <span class="comment"># 工具栏位置，left right top below</span></span><br><span class="line">    toolbar_sticky = <span class="keyword">False</span>,   <span class="comment"># 防止被坐标轴数据遮挡，主要是left和below的时候</span></span><br><span class="line">    y_axis_type = <span class="string">'log'</span>, y_range = [<span class="number">0.001</span>,<span class="number">10</span>**<span class="number">11</span>],</span><br><span class="line">    x_axis_label = <span class="string">'sections'</span>, y_axis_label = <span class="string">'particles'</span>,</span><br><span class="line">    title = <span class="string">'log axis example'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制折线</span></span><br><span class="line">p.line(x, y0, legend = <span class="string">'y = 10^x'</span>, line_color = <span class="string">'red'</span>)</span><br><span class="line"><span class="comment"># 绘制折点</span></span><br><span class="line">p.circle(x, y0, legend = <span class="string">'y = 10^x'</span>, fill_color = <span class="string">'red'</span>,line_color = <span class="string">'red'</span>, size = <span class="number">6</span>)</span><br><span class="line"><span class="comment"># 只绘制折线</span></span><br><span class="line">p.line(x, y1, legend = <span class="string">'y = 10^x^2'</span>, line_color = <span class="string">'orange'</span>, line_dash = (<span class="number">4</span>,<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">p.legend.location = <span class="string">'top_left'</span></span><br><span class="line">p.legend.location = <span class="string">"top_left"</span></span><br><span class="line"><span class="comment"># 点击图例，隐藏相应图表</span></span><br><span class="line">p.legend.click_policy=<span class="string">"hide"</span>  <span class="comment"># 参数如果改为'mute'，则点击图例，相应的</span></span><br><span class="line"></span><br><span class="line">show(p)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>实际上toolbar之前一直在用，这里只是多了两个参数，不多赘述</p>
+</blockquote>
+<h2 id="悬浮提示框"><a href="#悬浮提示框" class="headerlink" title="悬浮提示框"></a>悬浮提示框</h2><blockquote>
+<p>把鼠标放到相应的图标上会显示图表的数据</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> bokeh.models <span class="keyword">import</span> HoverTool</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建数据</span></span><br><span class="line">fruits = [<span class="string">'Apples'</span>,<span class="string">'Pears'</span>,<span class="string">'Plumns'</span>, <span class="string">'Grapes'</span>]</span><br><span class="line">counts = [<span class="number">4</span>,<span class="number">6</span>,<span class="number">3</span>,<span class="number">8</span>]</span><br><span class="line">color = brewer[<span class="string">'Set2'</span>][<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建ColumnsDataSource</span></span><br><span class="line">source = ColumnDataSource(data = dict(fruits = fruits, counts = counts,color = color))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建悬浮提示框</span></span><br><span class="line">hover = HoverTool(tooltips = [</span><br><span class="line">    (<span class="string">"(x,y)"</span>, <span class="string">"($x,$y)"</span>),</span><br><span class="line">    (<span class="string">'fruits'</span>, <span class="string">'@fruits'</span>),</span><br><span class="line">    (<span class="string">'counts'</span>, <span class="string">'@counts'</span>),</span><br><span class="line">    ])</span><br><span class="line"><span class="comment"># $ 表示自动取值，这里是取了x，y轴的值，在这个表中是没有意义的</span></span><br><span class="line"><span class="comment"># @ 表示取数据中相应字段的值</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p = figure(width = <span class="number">600</span>, height = <span class="number">400</span>,x_range = fruits,</span><br><span class="line">           <span class="comment"># 注意下面的写法，是一个列表，里面加了hover参数</span></span><br><span class="line">          tools = [hover,<span class="string">'box_select,reset, pan, crosshair'</span>]) </span><br><span class="line">p.vbar(x = <span class="string">'fruits'</span>, top = <span class="string">'counts'</span>, source = source,</span><br><span class="line">      width = <span class="number">0.5</span>, alpha = <span class="number">0.8</span>,</span><br><span class="line">      color = <span class="string">'color'</span>)</span><br><span class="line"></span><br><span class="line">show(p)</span><br></pre></td></tr></table></figure>
 <blockquote>
 <ul>
-<li>-p 6379:6379 : 将容器的6379端口映射到主机的6379端口</li>
-<li>-d : 将容器后台运行</li>
-<li>-v $PWD/data:/data : 将主机中当前目录下的data目录挂载到容器的/data目录下</li>
-<li>redis-server –appendonly yes : 在容器执行redis-server启动命令，并打开redis持久化配置</li>
+<li><ol>
+<li>需要导入HoverTool模块</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>注意HoverTool参数的设置</li>
+</ol>
+</li>
+<li><ol start="3">
+<li>注意figure中tools参数的写法与之前不一样了</li>
+</ol>
+</li>
 </ul>
 </blockquote>
-<p>如果创建成功，将会返回一大串字符串</p>
-<h2 id="进入Redis容器中设置密码"><a href="#进入Redis容器中设置密码" class="headerlink" title="进入Redis容器中设置密码"></a>进入Redis容器中设置密码</h2><p>执行命令，在docker容器中开启一个交互模式的终端</p>
-<pre><code>$ docker exec -it bfcb1feee2db bash
-</code></pre><p>命令中参数解释如下：</p>
-<blockquote>
-<ul>
-<li>-i :即使没有附加也保持STDIN 打开</li>
-<li>-t :分配一个伪终端</li>
-</ul>
-</blockquote>
-<p>在Redis容器中运行Redis客户端  </p>
-<pre><code>$ redis-cli
-</code></pre><blockquote>
-<p>上面这条命令的完全体长这样 <code>redis-cli -h 127.0.0.1 -p 6379 -a password</code><br>不加参数默认连接本地redis服务器，端口也是默认6379，默认没有密码</p>
-</blockquote>
-<p>使用命令查看当前redis服务器的密码：</p>
-<pre><code>$ 127.0.0.1:6379&gt; config get requirepass
-</code></pre><p>当然返回结果为空，然后设置密码  </p>
-<pre><code>$ 127.0.0.1:6379&gt; config set requirepass iampassword
-</code></pre><p>再次查看redis服务器的密码，就会发现有了密码</p>
-<pre><code>$ 127.0.0.1:6379&gt; config get requirepass
-1) &quot;requirepass&quot;
-2) &quot;iampassword&quot;
-</code></pre><p>退出客户端后重新登录redis客户端，来检验密码设置是否成功</p>
-<pre><code>$ 127.0.0.1:6379&gt; exit
-$ redis-cli 
-</code></pre><p>此时我们同样可以进入redis客户端，但是，执行命令会发现没有权限  </p>
-<pre><code>$ 127.0.0.1:6379&gt; keys *
-(error) NOAUTH Authentication required.
-</code></pre><p>然后再使用密码进入redis-cli</p>
-<pre><code>$ redis-cli -a iampassword
-</code></pre><blockquote>
-<p>在没有输入密码的情况下进入redis-cli，然后输入命令<code>auth iampassword</code>,也是可以获得权限的</p>
-</blockquote>
-<p>就会发现可以执行常用的命令<br><strong><em>但是</em></strong>，如果我们重启Docker容器，就会发现，<strong><em>之前设置的密码失效了！！！！</em></strong><br>引用网友的话：容器不应该是长久性的东西，要保持容器的可抛弃性，有问题就应该rm掉，数据保存在容器外，然后直接run新的容器。<br>同样的，也不应该在容器中对容器进行配置！！</p>
-<h2 id="给Docker容器设置密码的正确方式！"><a href="#给Docker容器设置密码的正确方式！" class="headerlink" title="给Docker容器设置密码的正确方式！"></a>给Docker容器设置密码的正确方式！</h2><blockquote>
-<p>接拉取镜像后的步骤</p>
-</blockquote>
-<p>在我们创建的redis目录下，创建<code>redis.conf</code>文件,然后去<a href="http://www.redis.cn/download.html" target="_blank" rel="noopener">redis官网</a>下载个压缩包，找到里面的redis.conf文件，并把里面的配置信息添加到我们的conf文件中<br>然后编辑redis.conf文件，在文件的任意位置添加一行配置：</p>
-<pre><code>requirepass iampassword
-</code></pre><p>然后启动容器：</p>
-<pre><code>docker run -p 6379:6379 --name myredis -v $PWD/redis.conf:/etc/redis/redis.conf -v $PWD/data:/data -d redis:latest redis-server /etc/redis/redis.conf --appendonly yes
-</code></pre><blockquote>
-<p>与之前启动容器不同的是，我们这里在启动容器的时候，给容器添加了配置文件，这样配置文件中的密码配置也会生效</p>
-</blockquote>
-<p>之后，你就可以按照之前测试的步骤去测试下密码了！</p>
-<h2 id="在操作过程中遇到的Error"><a href="#在操作过程中遇到的Error" class="headerlink" title="在操作过程中遇到的Error"></a>在操作过程中遇到的Error</h2><blockquote>
-<ul>
-<li>driver failed programming external connectivity on endpoint myredis</li>
-</ul>
-</blockquote>
-<p>原因：<br>在docker运行的过程中，我重启了系统的防火墙，系统防火墙关闭会清空docker防火墙的规则，这里要做一些操作，并重启docker，依次执行以下命令： </p>
-<pre><code>$ pkill docker                  # 终止进程
-$ iptables -t nat -F            # 清空nat表的所有链
-$ ifconfig docker0 down         # 停止docker默认网桥
-$ brctl delbr docker0           # 删除网桥
-$ systemctl restart docker      # 重启docker
-</code></pre><p>参考了网上的资料：<a href="https://blog.csdn.net/shida_csdn/article/details/79376761" target="_blank" rel="noopener">https://blog.csdn.net/shida_csdn/article/details/79376761</a><br>它的命令有问题，还是执行我改过的吧  </p>
-<blockquote>
-<ul>
-<li>启动docker容器后它就自动退出了，也不报错，再次启动容器也不行</li>
-</ul>
-</blockquote>
-<p>查看docker日志，发现报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@lab01 redis]# docker logs [容器id]</span><br><span class="line">*** FATAL CONFIG FILE ERROR ***</span><br><span class="line">Reading the configuration file, at line 329</span><br><span class="line">&gt;&gt;&gt; &apos;vm-enabled no&apos;</span><br><span class="line">Bad directive or wrong number of arguments</span><br></pre></td></tr></table></figure>
-<p>原因：我在网上copy的<code>redis.conf</code>文件跟我当前容器中的<code>redis版本</code>不匹配,才有了后面的索性去官网下一个原版的用</p>
-<blockquote>
-<ul>
-<li>启动docker容器后，在远程访问，不能连接</li>
-</ul>
-</blockquote>
-<p>原因：去redis.conf配置文件中查看配置，发现有个配置为<br><code>bind 127.0.0.1</code><br>从注释中了解到，这段配置，是限制远程连接的，直接把它注释掉就ok了</p>
-
+<h2 id="图表分页"><a href="#图表分页" class="headerlink" title="图表分页"></a>图表分页</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 导入panel，tabs模块</span></span><br><span class="line"><span class="keyword">from</span> bokeh.models.widgets <span class="keyword">import</span> Panel, Tabs</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">p1 = figure(plot_width=<span class="number">500</span>, plot_height=<span class="number">300</span>)</span><br><span class="line">p1.circle([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">6</span>, <span class="number">7</span>, <span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>], size=<span class="number">20</span>, color=<span class="string">"navy"</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">tab1 = Panel(child=p1, title=<span class="string">"circle"</span>)</span><br><span class="line"><span class="comment"># child → 页码</span></span><br><span class="line"><span class="comment"># title → 分页名称</span></span><br><span class="line"></span><br><span class="line">p2 = figure(plot_width=<span class="number">500</span>, plot_height=<span class="number">300</span>)</span><br><span class="line">p2.line([<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>], [<span class="number">4</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">8</span>, <span class="number">6</span>], line_width=<span class="number">3</span>, color=<span class="string">"navy"</span>, alpha=<span class="number">0.5</span>)</span><br><span class="line">tab2 = Panel(child=p2, title=<span class="string">"line"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置分页图表</span></span><br><span class="line">tabs = Tabs(tabs=[ tab1, tab2 ])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">show(tabs)</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -511,12 +444,6 @@ $ systemctl restart docker      # 重启docker
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/docker-redis/" rel="tag"># docker redis</a>
-          
-        </div>
-      
 
       
       
@@ -526,8 +453,8 @@ $ systemctl restart docker      # 重启docker
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/05/08/MacOS下使用scrapy框架爬取百度地图POI/" rel="next" title="MacOS下使用scrapy框架爬取百度地图POI">
-                <i class="fa fa-chevron-left"></i> MacOS下使用scrapy框架爬取百度地图POI
+              <a href="/2019/01/04/Bokeh绘图笔记三-折线图、面积图、柱状图和直方图/" rel="next" title="Bokeh绘图笔记三-折线图、面积图、柱状图和直方图">
+                <i class="fa fa-chevron-left"></i> Bokeh绘图笔记三-折线图、面积图、柱状图和直方图
               </a>
             
           </div>
@@ -535,10 +462,6 @@ $ systemctl restart docker      # 重启docker
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/06/11/SpringBoot笔记一-HelloWorld/" rel="prev" title="SpringBoot笔记一-HelloWorld">
-                SpringBoot笔记一-HelloWorld <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -688,7 +611,7 @@ $ systemctl restart docker      # 重启docker
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Docker安装Redis并设置密码"><span class="nav-number">1.</span> <span class="nav-text">使用Docker安装Redis并设置密码</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#拉取redis镜像"><span class="nav-number">1.1.</span> <span class="nav-text">拉取redis镜像</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Redis容器"><span class="nav-number">1.2.</span> <span class="nav-text">创建Redis容器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#进入Redis容器中设置密码"><span class="nav-number">1.3.</span> <span class="nav-text">进入Redis容器中设置密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#给Docker容器设置密码的正确方式！"><span class="nav-number">1.4.</span> <span class="nav-text">给Docker容器设置密码的正确方式！</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在操作过程中遇到的Error"><span class="nav-number">1.5.</span> <span class="nav-text">在操作过程中遇到的Error</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ToolBar和图表隐藏"><span class="nav-number">1.</span> <span class="nav-text">ToolBar和图表隐藏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#悬浮提示框"><span class="nav-number">2.</span> <span class="nav-text">悬浮提示框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图表分页"><span class="nav-number">3.</span> <span class="nav-text">图表分页</span></a></li></ol></div>
             
 
           </div>

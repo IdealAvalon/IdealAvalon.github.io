@@ -102,24 +102,30 @@
 
 
 
-  <meta name="description" content="使用背景由于将表格类数据导入python中进行数据分析的时候非utf8的编码有时候会不能很好地识别，而使用excel打开大文件（50M以上可能就会卡了）进行转码又很费劲，所以想着使用轻便的sublime进行转码 使用环境  macos sublime text   软件和插件的安装 需要安装的软件和插件：    sublime text 插件：Package Control 插件：ConvertT">
+  <meta name="description" content="运行环境  python3.7 jupyter notebook   分别创建多个图表1234567891011import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline   # jupyter notebook内嵌式绘图# 分别创建多个图fig1 = plt.figure(num">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用sublime text将文件编码转换为utf-8">
-<meta property="og:url" content="http://yoursite.com/2019/01/13/使用sublime-text将文件编码转换为utf-8/index.html">
+<meta property="og:title" content="matplotlib绘图笔记-子图创建">
+<meta property="og:url" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/index.html">
 <meta property="og:site_name" content="张小全">
-<meta property="og:description" content="使用背景由于将表格类数据导入python中进行数据分析的时候非utf8的编码有时候会不能很好地识别，而使用excel打开大文件（50M以上可能就会卡了）进行转码又很费劲，所以想着使用轻便的sublime进行转码 使用环境  macos sublime text   软件和插件的安装 需要安装的软件和插件：    sublime text 插件：Package Control 插件：ConvertT">
+<meta property="og:description" content="运行环境  python3.7 jupyter notebook   分别创建多个图表1234567891011import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline   # jupyter notebook内嵌式绘图# 分别创建多个图fig1 = plt.figure(num">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-13T07:33:34.833Z">
+<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/多图绘制.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/多图2.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/子图1.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/zitu2.png">
+<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/zitu3.png">
+<meta property="og:updated_time" content="2019-01-15T08:58:21.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用sublime text将文件编码转换为utf-8">
-<meta name="twitter:description" content="使用背景由于将表格类数据导入python中进行数据分析的时候非utf8的编码有时候会不能很好地识别，而使用excel打开大文件（50M以上可能就会卡了）进行转码又很费劲，所以想着使用轻便的sublime进行转码 使用环境  macos sublime text   软件和插件的安装 需要安装的软件和插件：    sublime text 插件：Package Control 插件：ConvertT">
+<meta name="twitter:title" content="matplotlib绘图笔记-子图创建">
+<meta name="twitter:description" content="运行环境  python3.7 jupyter notebook   分别创建多个图表1234567891011import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline   # jupyter notebook内嵌式绘图# 分别创建多个图fig1 = plt.figure(num">
+<meta name="twitter:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/多图绘制.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/13/使用sublime-text将文件编码转换为utf-8/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/"/>
 
 
 
@@ -129,7 +135,7 @@
   };
 </script>
 
-  <title>使用sublime text将文件编码转换为utf-8 | 张小全</title>
+  <title>matplotlib绘图笔记-子图创建 | 张小全</title>
   
 
 
@@ -293,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/使用sublime-text将文件编码转换为utf-8/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/matplotlib绘图笔记-子图创建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhangXQ">
@@ -310,7 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用sublime text将文件编码转换为utf-8
+          <h1 class="post-title" itemprop="name headline">matplotlib绘图笔记-子图创建
               
             
           </h1>
@@ -335,7 +341,7 @@
                 
               
 
-              <time title="Created: 2019-01-13 14:59:27 / Modified: 15:33:34" itemprop="dateCreated datePublished" datetime="2019-01-13T14:59:27+08:00">2019-01-13</time>
+              <time title="Created: 2019-01-15 16:39:18 / Modified: 16:58:21" itemprop="dateCreated datePublished" datetime="2019-01-15T16:39:18+08:00">2019-01-15</time>
             
 
             
@@ -357,7 +363,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具/" itemprop="url" rel="index"><span itemprop="name">工具</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/matplotlib绘图/" itemprop="url" rel="index"><span itemprop="name">matplotlib绘图</span></a></span>
 
                 
                 
@@ -399,51 +405,29 @@
       
 
       
-        <h2 id="使用背景"><a href="#使用背景" class="headerlink" title="使用背景"></a>使用背景</h2><p>由于将表格类数据导入python中进行数据分析的时候非utf8的编码有时候会不能很好地识别，而使用excel打开大文件（50M以上可能就会卡了）进行转码又很费劲，所以想着使用轻便的sublime进行转码</p>
-<h2 id="使用环境"><a href="#使用环境" class="headerlink" title="使用环境"></a>使用环境</h2><blockquote>
+        <h2 id="运行环境"><a href="#运行环境" class="headerlink" title="运行环境"></a>运行环境</h2><blockquote>
 <ul>
-<li>macos</li>
-<li>sublime text</li>
+<li>python3.7</li>
+<li>jupyter notebook</li>
 </ul>
 </blockquote>
-<h2 id="软件和插件的安装"><a href="#软件和插件的安装" class="headerlink" title="软件和插件的安装"></a>软件和插件的安装</h2><blockquote>
-<p>需要安装的软件和插件：  </p>
-<ul>
-<li>sublime text</li>
-<li>插件：Package Control</li>
-<li>插件：ConvertToUTF8</li>
-<li>插件：codecs33</li>
-</ul>
+<h2 id="分别创建多个图表"><a href="#分别创建多个图表" class="headerlink" title="分别创建多个图表"></a>分别创建多个图表</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">% matplotlib inline   <span class="comment"># jupyter notebook内嵌式绘图</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分别创建多个图</span></span><br><span class="line">fig1 = plt.figure(num = <span class="number">1</span>, figsize = (<span class="number">8</span>,<span class="number">3</span>))</span><br><span class="line">plt.plot(np.random.rand(<span class="number">50</span>).cumsum(),<span class="string">'k--'</span>)</span><br><span class="line"></span><br><span class="line">fig2 = plt.figure(num = <span class="number">2</span>, figsize = (<span class="number">8</span>,<span class="number">3</span>))</span><br><span class="line">plt.plot(<span class="number">50</span> - np.random.rand(<span class="number">50</span>).cumsum(),<span class="string">'k--'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记-子图创建/多图绘制.png" alt="绘制多个图片"><br><img src="/2019/01/15/matplotlib绘图笔记-子图创建/多图2.png" alt="绘制多个图片"></p>
+<h2 id="子图创建"><a href="#子图创建" class="headerlink" title="子图创建"></a>子图创建</h2><h3 id="创建方式一"><a href="#创建方式一" class="headerlink" title="创建方式一"></a>创建方式一</h3><blockquote>
+<p>fig.add_subplot</p>
 </blockquote>
-<h3 id="sublime-text安装"><a href="#sublime-text安装" class="headerlink" title="sublime text安装"></a>sublime text安装</h3><p><a href="www.sublimetext.com">官网</a>自行下载安装</p>
-<h3 id="Package-Control安装"><a href="#Package-Control安装" class="headerlink" title="Package Control安装"></a>Package Control安装</h3><p><a href="https://packagecontrol.io/installation" target="_blank" rel="noopener">官方安装方法</a><br>我是使用官方安装方法安装的，下面摘录网上参考资料中的方法  </p>
-<ol>
-<li>使用快捷键：<code>ctrl + ·</code>  </li>
-<li>在弹出的输入框中，复制以下代码并回车：  </li>
-</ol>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)</span><br></pre></td></tr></table></figure>
-<p>安装结束后重启sublime text，点击 <code>sublime text</code> - <code>Preferences</code><br>应该就有了<code>Package Settings</code> 和 <code>Package Control</code> 两个选项</p>
-<h3 id="安装ConvertToUTF8插件"><a href="#安装ConvertToUTF8插件" class="headerlink" title="安装ConvertToUTF8插件"></a>安装ConvertToUTF8插件</h3><ol>
-<li>可以点击上面步骤中的<code>Package Control</code>选项，也可以使用快捷键：<code>command + shift + p</code><br>打开Package Control搜索框</li>
-<li>输入<code>install package</code> 并回车，调出instal package 输入框</li>
-<li>在新的输入框中输入 <code>ConverToUTF8</code>，并回车，安装插件</li>
-</ol>
-<h3 id="安装codecs33插件"><a href="#安装codecs33插件" class="headerlink" title="安装codecs33插件"></a>安装codecs33插件</h3><blockquote>
-<p>在网上参考的资料中看到，有些用户进行到上面一步，就可以成功打开非utf8的文件了，但是我这里不行，根据<code>ConvertToUTF8</code>插件的提示，要再安装<code>codecs33</code>插件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子图创建方式一</span></span><br><span class="line"><span class="comment"># 创建图表</span></span><br><span class="line">fig = plt.figure(figsize = (<span class="number">10</span>,<span class="number">6</span>), facecolor = <span class="string">'gray'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加子图</span></span><br><span class="line"><span class="string">''' 这里的参数表示两行、两列，第一个子图，横向计数 '''</span></span><br><span class="line">ax1 = fig.add_subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>)</span><br><span class="line">plt.plot(np.random.rand(<span class="number">50</span>).cumsum(),<span class="string">'k--'</span>)</span><br><span class="line">plt.plot(np.random.rand(<span class="number">50</span>).cumsum(),<span class="string">'b--'</span>)</span><br><span class="line">ax1.legend([<span class="string">'a'</span>,<span class="string">'b'</span>],loc = <span class="string">'upper left'</span>)</span><br><span class="line"></span><br><span class="line">ax2 = fig.add_subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>)</span><br><span class="line">ax2.hist(np.random.rand(<span class="number">50</span>),alpha = <span class="number">0.5</span>,edgecolor = <span class="string">'black'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这个子图会把第二行分成三列，这是第一个</span></span><br><span class="line"><span class="string">'''尽量不要用这种划分方式，计数容易出问题，最好使所有子图的行列参数一致！！！！'''</span></span><br><span class="line">ax4 = fig.add_subplot(<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br><span class="line">df = pd.DataFrame(np.random.rand(<span class="number">10</span>,<span class="number">4</span>),columns = list(<span class="string">'abcd'</span>))</span><br><span class="line">ax4.plot(df,alpha = <span class="number">0.8</span>,linestyle = <span class="string">'--'</span>,marker = <span class="string">'.'</span>)</span><br><span class="line">ax4.legend(df.columns.tolist())</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记-子图创建/子图1.png" alt="子图创建方式一"></p>
+<h3 id="创建方式二"><a href="#创建方式二" class="headerlink" title="创建方式二"></a>创建方式二</h3><blockquote>
+<p>fig, axes = plt.subplots()</p>
 </blockquote>
-<ol>
-<li>重复上面的1-2步骤，</li>
-<li>在输入框中，输入 <code>codecs33</code>， 并回车，安装插件</li>
-</ol>
-<h2 id="测试打开win系统中拷贝过来的csv文件"><a href="#测试打开win系统中拷贝过来的csv文件" class="headerlink" title="测试打开win系统中拷贝过来的csv文件"></a>测试打开win系统中拷贝过来的csv文件</h2><p>如果文件较大，可能打开后需要几秒钟的转换时间，50M的文件应该不超过10秒钟<br>如果能正确显示，就ok了</p>
-<h2 id="转换成utf8格式"><a href="#转换成utf8格式" class="headerlink" title="转换成utf8格式"></a>转换成utf8格式</h2><blockquote>
-<p>提示，最好是把源文件复制一份，因为转换时不会生成新文件</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sharex、sharey 为子图之间是否共享坐标</span></span><br><span class="line">fig, axes = plt.subplots(<span class="number">2</span>,<span class="number">3</span>, sharex=<span class="keyword">False</span>, sharey=<span class="keyword">False</span>, figsize = (<span class="number">10</span>,<span class="number">4</span>))</span><br><span class="line"><span class="comment"># 调整子图之间的横向、纵向间距</span></span><br><span class="line">plt.subplots_adjust(wspace=<span class="number">0.3</span>,hspace=<span class="number">0.3</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第一个子图，直接使用数据生成表</span></span><br><span class="line">s = pd.Series(np.random.randn(<span class="number">1000</span>).cumsum())</span><br><span class="line">s.plot(ax = axes[<span class="number">0</span>,<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制第二个子图，使用axes生成</span></span><br><span class="line">s2 = pd.Series(np.random.rand(<span class="number">50</span>).cumsum())</span><br><span class="line">axes[<span class="number">1</span>,<span class="number">0</span>].plot(s2,alpha = <span class="number">0.6</span>, color = <span class="string">'black'</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记-子图创建/zitu2.png" alt="子图创建方式二"></p>
+<h3 id="子图创建方式三"><a href="#子图创建方式三" class="headerlink" title="子图创建方式三"></a>子图创建方式三</h3><blockquote>
+<p>使用dataframe直接生成多个列子图</p>
 </blockquote>
-<p>依次点击 <code>file</code> - <code>set file encoding to</code> , 然后选择utf8就好了  </p>
-<blockquote>
-<p>这里亲测，如果使用sublime text自带的<code>save with encoding</code>选项，是不能成功保存为utf8格式的</p>
-</blockquote>
-<h2 id="PS-卸载插件"><a href="#PS-卸载插件" class="headerlink" title="PS: 卸载插件"></a>PS: 卸载插件</h2><p><code>command + shift + p</code><br>输入<code>remove package</code> 回车，就能看到已经安装的插件了，然后选择插件，回车，即可卸载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 子图创建方式三</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''由数据直接生成多个子图'''</span></span><br><span class="line"></span><br><span class="line">df = pd.DataFrame(np.random.randn(<span class="number">100</span>,<span class="number">4</span>), columns = list(<span class="string">'dgrd'</span>))</span><br><span class="line">df.plot(style = <span class="string">'--.'</span>,alpha = <span class="number">0.7</span>,grid = <span class="keyword">True</span>, figsize = (<span class="number">12</span>,<span class="number">8</span>),</span><br><span class="line">       subplots = <span class="keyword">True</span>,  <span class="comment"># 注意这个参数</span></span><br><span class="line">       layout = (<span class="number">2</span>,<span class="number">2</span>),  <span class="comment"># 与subplots参数一起使用，子图布局</span></span><br><span class="line">       sharex = <span class="keyword">False</span>)</span><br></pre></td></tr></table></figure>
+<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记-子图创建/zitu3.png" alt="子图创建方式三"></p>
 
       
     </div>
@@ -471,8 +455,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/06/Bokeh绘图笔记四-ToolBar、图表隐藏和分页/" rel="next" title="Bokeh绘图笔记四-ToolBar、图表隐藏和分页">
-                <i class="fa fa-chevron-left"></i> Bokeh绘图笔记四-ToolBar、图表隐藏和分页
+              <a href="/2019/01/13/使用sublime-text将文件编码转换为utf-8/" rel="next" title="使用sublime text将文件编码转换为utf-8">
+                <i class="fa fa-chevron-left"></i> 使用sublime text将文件编码转换为utf-8
               </a>
             
           </div>
@@ -480,10 +464,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/15/matplotlib绘图笔记-子图创建/" rel="prev" title="matplotlib绘图笔记-子图创建">
-                matplotlib绘图笔记-子图创建 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -637,7 +617,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用背景"><span class="nav-number">1.</span> <span class="nav-text">使用背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用环境"><span class="nav-number">2.</span> <span class="nav-text">使用环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件和插件的安装"><span class="nav-number">3.</span> <span class="nav-text">软件和插件的安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sublime-text安装"><span class="nav-number">3.1.</span> <span class="nav-text">sublime text安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Package-Control安装"><span class="nav-number">3.2.</span> <span class="nav-text">Package Control安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装ConvertToUTF8插件"><span class="nav-number">3.3.</span> <span class="nav-text">安装ConvertToUTF8插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装codecs33插件"><span class="nav-number">3.4.</span> <span class="nav-text">安装codecs33插件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试打开win系统中拷贝过来的csv文件"><span class="nav-number">4.</span> <span class="nav-text">测试打开win系统中拷贝过来的csv文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#转换成utf8格式"><span class="nav-number">5.</span> <span class="nav-text">转换成utf8格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PS-卸载插件"><span class="nav-number">6.</span> <span class="nav-text">PS: 卸载插件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#运行环境"><span class="nav-number">1.</span> <span class="nav-text">运行环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分别创建多个图表"><span class="nav-number">2.</span> <span class="nav-text">分别创建多个图表</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子图创建"><span class="nav-number">3.</span> <span class="nav-text">子图创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建方式一"><span class="nav-number">3.1.</span> <span class="nav-text">创建方式一</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建方式二"><span class="nav-number">3.2.</span> <span class="nav-text">创建方式二</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#子图创建方式三"><span class="nav-number">3.3.</span> <span class="nav-text">子图创建方式三</span></a></li></ol></li></ol></div>
             
 
           </div>

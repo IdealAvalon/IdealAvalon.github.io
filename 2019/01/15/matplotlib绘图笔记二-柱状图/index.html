@@ -111,7 +111,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu.png">
 <meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu2.png">
-<meta property="og:updated_time" content="2019-01-15T11:26:29.186Z">
+<meta property="og:updated_time" content="2019-01-15T11:29:26.716Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="matplotlib绘图笔记二-柱状图">
 <meta name="twitter:description" content="柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）1234567891011121314151617181920212223import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline# 这里我们使用子图的方法创建四个子图fig, axes = plt.subplots(4,1,fig">
@@ -338,7 +338,7 @@
                 
               
 
-              <time title="Created: 2019-01-15 18:53:46 / Modified: 19:26:29" itemprop="dateCreated datePublished" datetime="2019-01-15T18:53:46+08:00">2019-01-15</time>
+              <time title="Created: 2019-01-15 18:53:46 / Modified: 19:29:26" itemprop="dateCreated datePublished" datetime="2019-01-15T18:53:46+08:00">2019-01-15</time>
             
 
             
@@ -409,8 +409,9 @@
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize = (<span class="number">10</span>,<span class="number">4</span>))</span><br><span class="line">x = np.arange(<span class="number">10</span>)</span><br><span class="line">y1 = np.random.rand(<span class="number">10</span>)</span><br><span class="line">y2 = -np.random.rand(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># xerr/yerr：x/y 方向的error bar</span></span><br><span class="line">plt.bar(x,y1, facecolor = <span class="string">'yellowgreen'</span>,edgecolor = <span class="string">'white'</span>,yerr = y1*<span class="number">0.1</span>)</span><br><span class="line">plt.bar(x,y2, facecolor = <span class="string">'lightskyblue'</span>, edgecolor = <span class="string">'white'</span>, yerr = y2*<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标注</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> zip(x,y1):</span><br><span class="line">    plt.text(i<span class="number">-0.25</span>,j<span class="number">-0.15</span>, <span class="string">'%.2f'</span> %j, color = <span class="string">'white'</span>,fontsize = <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> zip(x,y2):</span><br><span class="line">    plt.text(i<span class="number">-0.3</span>, j+<span class="number">0.05</span>, <span class="string">'%.2f'</span> %j, color = <span class="string">'white'</span>, fontsize = <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>使用for循环添加标注，其中的i，j为标注的位置（分别为水平和垂直位置），请根据实际情况灵活调整<br>结果：<br><img src="/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu2.png" alt="柱状图2"></p>
+<p>使用for循环添加标注，其中的i，j为标注的位置（分别为水平和垂直位置），请根据实际情况灵活调整</p>
 </blockquote>
+<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu2.png" alt="柱状图2"></p>
 
       
     </div>

@@ -102,27 +102,24 @@
 
 
 
-  <meta name="description" content="柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）1234567891011121314151617181920212223import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline# 这里我们使用子图的方法创建四个子图fig, axes = plt.subplots(4,1,fig">
+  <meta name="description" content="关于用法 这里仅总结常见用法  np.random.rand()123456789101112131415161718192021import numpy as np# rand 生成(0,1)之间的随机数&apos;&apos;&apos;rand(d0,d1,d2...)	无参数：生成一个(0,1)的随机数	仅一个参数n：生成n个(0,1)的随机数	两个或以上参数：表示生成随机数的维度&apos;&apos;&apos;# 无参数&amp;gt;&amp;gt;&amp;gt">
 <meta property="og:type" content="article">
-<meta property="og:title" content="matplotlib绘图笔记二-柱状图">
-<meta property="og:url" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/index.html">
+<meta property="og:title" content="numpy中random.rand,random.randn,random.randint和random.RandomState的区别及常见用法">
+<meta property="og:url" content="http://yoursite.com/2019/01/16/numpy中random-rand-random-randn-random-randint和random-RandomState的区别及用法/index.html">
 <meta property="og:site_name" content="张小全">
-<meta property="og:description" content="柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）1234567891011121314151617181920212223import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline# 这里我们使用子图的方法创建四个子图fig, axes = plt.subplots(4,1,fig">
+<meta property="og:description" content="关于用法 这里仅总结常见用法  np.random.rand()123456789101112131415161718192021import numpy as np# rand 生成(0,1)之间的随机数&apos;&apos;&apos;rand(d0,d1,d2...)	无参数：生成一个(0,1)的随机数	仅一个参数n：生成n个(0,1)的随机数	两个或以上参数：表示生成随机数的维度&apos;&apos;&apos;# 无参数&amp;gt;&amp;gt;&amp;gt">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu.png">
-<meta property="og:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu2.png">
-<meta property="og:updated_time" content="2019-01-15T11:31:57.254Z">
+<meta property="og:updated_time" content="2019-01-16T03:57:30.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="matplotlib绘图笔记二-柱状图">
-<meta name="twitter:description" content="柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）1234567891011121314151617181920212223import numpy as npimport pandas as pdimport matplotlib.pyplot as plt% matplotlib inline# 这里我们使用子图的方法创建四个子图fig, axes = plt.subplots(4,1,fig">
-<meta name="twitter:image" content="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu.png">
+<meta name="twitter:title" content="numpy中random.rand,random.randn,random.randint和random.RandomState的区别及常见用法">
+<meta name="twitter:description" content="关于用法 这里仅总结常见用法  np.random.rand()123456789101112131415161718192021import numpy as np# rand 生成(0,1)之间的随机数&apos;&apos;&apos;rand(d0,d1,d2...)	无参数：生成一个(0,1)的随机数	仅一个参数n：生成n个(0,1)的随机数	两个或以上参数：表示生成随机数的维度&apos;&apos;&apos;# 无参数&amp;gt;&amp;gt;&amp;gt">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/01/16/numpy中random-rand-random-randn-random-randint和random-RandomState的区别及用法/"/>
 
 
 
@@ -132,7 +129,7 @@
   };
 </script>
 
-  <title>matplotlib绘图笔记二-柱状图 | 张小全</title>
+  <title>numpy中random.rand,random.randn,random.randint和random.RandomState的区别及常见用法 | 张小全</title>
   
 
 
@@ -296,7 +293,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/15/matplotlib绘图笔记二-柱状图/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/16/numpy中random-rand-random-randn-random-randint和random-RandomState的区别及用法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="ZhangXQ">
@@ -313,7 +310,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">matplotlib绘图笔记二-柱状图
+          <h1 class="post-title" itemprop="name headline">numpy中random.rand,random.randn,random.randint和random.RandomState的区别及常见用法
               
             
           </h1>
@@ -338,7 +335,7 @@
                 
               
 
-              <time title="Created: 2019-01-15 18:53:46 / Modified: 19:31:57" itemprop="dateCreated datePublished" datetime="2019-01-15T18:53:46+08:00">2019-01-15</time>
+              <time title="Created: 2019-01-16 11:25:42 / Modified: 11:57:30" itemprop="dateCreated datePublished" datetime="2019-01-16T11:25:42+08:00">2019-01-16</time>
             
 
             
@@ -360,7 +357,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/matplotlib绘图/" itemprop="url" rel="index"><span itemprop="name">matplotlib绘图</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/numpy/" itemprop="url" rel="index"><span itemprop="name">numpy</span></a></span>
 
                 
                 
@@ -402,16 +399,13 @@
       
 
       
-        <h2 id="柱状图-多系列柱状图-堆叠图-条形图（横向柱状图）"><a href="#柱状图-多系列柱状图-堆叠图-条形图（横向柱状图）" class="headerlink" title="柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）"></a>柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">% matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># 这里我们使用子图的方法创建四个子图</span></span><br><span class="line">fig, axes = plt.subplots(<span class="number">4</span>,<span class="number">1</span>,figsize = (<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">plt.subplots_adjust(hspace=<span class="keyword">None</span>)</span><br><span class="line"></span><br><span class="line">s = pd.Series(np.random.randint(<span class="number">0</span>,<span class="number">10</span>,<span class="number">16</span>),index = list(<span class="string">'dheyudhsjkiuytwk'</span>))</span><br><span class="line">df = pd.DataFrame(np.random.rand(<span class="number">10</span>,<span class="number">3</span>),columns = list(<span class="string">'abc'</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建方式一 kind = 'bar'</span></span><br><span class="line">s.plot(kind = <span class="string">'bar'</span>, ax = axes[<span class="number">0</span>], grid = <span class="keyword">True</span>, color = <span class="string">'b'</span>, alpha = <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建多系列柱状图</span></span><br><span class="line">df.plot(kind = <span class="string">'bar'</span>, ax = axes[<span class="number">1</span>], grid = <span class="keyword">True</span>, colormap = <span class="string">'Reds_r'</span>,edgecolor = <span class="string">'k'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建多系列堆叠图</span></span><br><span class="line">df.plot(kind = <span class="string">'bar'</span>, ax = axes[<span class="number">2</span>], grid = <span class="keyword">True</span>, colormap = <span class="string">'Blues_r'</span>,stacked = <span class="keyword">True</span>,edgecolor = <span class="string">'b'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建方式二 df.plot.bar</span></span><br><span class="line">df.plot.barh(ax = axes[<span class="number">3</span>], grid = <span class="keyword">True</span>, stacked = <span class="keyword">True</span>, colormap = <span class="string">'BuGn_r'</span>,edgecolor = <span class="string">'k'</span>)</span><br></pre></td></tr></table></figure>
-<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu.png" alt="柱状图"></p>
-<h2 id="一个带有标注的柱状图"><a href="#一个带有标注的柱状图" class="headerlink" title="一个带有标注的柱状图"></a>一个带有标注的柱状图</h2><blockquote>
-<p>这里我们给柱状图添加标注</p>
+        <h2 id="关于用法"><a href="#关于用法" class="headerlink" title="关于用法"></a>关于用法</h2><blockquote>
+<p>这里仅总结常见用法</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">plt.figure(figsize = (<span class="number">10</span>,<span class="number">4</span>))</span><br><span class="line">x = np.arange(<span class="number">10</span>)</span><br><span class="line">y1 = np.random.rand(<span class="number">10</span>)</span><br><span class="line">y2 = -np.random.rand(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># xerr/yerr：x/y 方向的error bar</span></span><br><span class="line">plt.bar(x,y1, facecolor = <span class="string">'yellowgreen'</span>,edgecolor = <span class="string">'white'</span>,yerr = y1*<span class="number">0.1</span>)</span><br><span class="line">plt.bar(x,y2, facecolor = <span class="string">'lightskyblue'</span>, edgecolor = <span class="string">'white'</span>, yerr = y2*<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 添加标注</span></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> zip(x,y1):</span><br><span class="line">    plt.text(i<span class="number">-0.25</span>,j<span class="number">-0.15</span>, <span class="string">'%.2f'</span> %j, color = <span class="string">'white'</span>,fontsize = <span class="number">15</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i,j <span class="keyword">in</span> zip(x,y2):</span><br><span class="line">    plt.text(i<span class="number">-0.3</span>, j+<span class="number">0.05</span>, <span class="string">'%.2f'</span> %j, color = <span class="string">'white'</span>, fontsize = <span class="number">15</span>)</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>使用for循环添加标注，其中的i，j为标注的位置（分别为水平和垂直位置），请根据实际情况灵活调整</p>
-</blockquote>
-<p>结果：<br><img src="/2019/01/15/matplotlib绘图笔记二-柱状图/zhuzhuangtu2.png" alt="柱状图2"></p>
+<h2 id="np-random-rand"><a href="#np-random-rand" class="headerlink" title="np.random.rand()"></a>np.random.rand()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># rand 生成(0,1)之间的随机数</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">rand(d0,d1,d2...)</span></span><br><span class="line"><span class="string">	无参数：生成一个(0,1)的随机数</span></span><br><span class="line"><span class="string">	仅一个参数n：生成n个(0,1)的随机数</span></span><br><span class="line"><span class="string">	两个或以上参数：表示生成随机数的维度</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 无参数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.rand()</span><br><span class="line"><span class="number">0.5383019068760416</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 一个参数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.rand(<span class="number">5</span>)</span><br><span class="line">array([<span class="number">0.92265339</span>, <span class="number">0.12845495</span>, <span class="number">0.13485151</span>, <span class="number">0.22730591</span>, <span class="number">0.44012622</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 两个参数，表示维度</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.rand(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line">array([[<span class="number">0.16050887</span>, <span class="number">0.9870681</span> , <span class="number">0.7665828</span> ],</span><br><span class="line">       [<span class="number">0.00376978</span>, <span class="number">0.31008052</span>, <span class="number">0.74375955</span>]])</span><br></pre></td></tr></table></figure>
+<h2 id="np-random-randn"><a href="#np-random-randn" class="headerlink" title="np.random.randn()"></a>np.random.randn()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string"># randn生成正态分布数值</span></span><br><span class="line"><span class="string">randn(d0,d1,d2...)</span></span><br><span class="line"><span class="string">	关于参数的用法和rand()相同</span></span><br><span class="line"><span class="string">	这里我根据经验得到一个不准确的结论，仅供参考：</span></span><br><span class="line"><span class="string">		随机生成10000000个随机数，其数值在(-6,6)之间</span></span><br><span class="line"><span class="string">'''</span></span><br></pre></td></tr></table></figure>
+<h2 id="np-random-randint"><a href="#np-random-randint" class="headerlink" title="np.random.randint()"></a>np.random.randint()</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># randint 用来生成随机的整数</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">randint(d1,d2,d3...)</span></span><br><span class="line"><span class="string">	该函数要求至少有一个参数</span></span><br><span class="line"><span class="string">	一个参数n：生成一个(0,n)之间的整数</span></span><br><span class="line"><span class="string">	两个参数：</span></span><br><span class="line"><span class="string">		1. 不显式使用形参名称：则表示生成一个(n1,n2)范围内的整数</span></span><br><span class="line"><span class="string">		2. 使用size形参：则size = (2,3)则表示维度</span></span><br><span class="line"><span class="string">	三个参数：(start,end,size),即前两个表示范围，第三个表示维度</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># 一个参数：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.randint(<span class="number">3</span>)</span><br><span class="line"><span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 两个参数：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.randint(<span class="number">5</span>,<span class="number">8</span>)</span><br><span class="line"><span class="number">6</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定size参数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.randint(<span class="number">6</span>,size = <span class="number">5</span>)</span><br><span class="line">array([<span class="number">0</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># 三个参数</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.random.randint(<span class="number">3</span>,<span class="number">7</span>,<span class="number">5</span>)</span><br><span class="line">array([<span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">3</span>, <span class="number">6</span>])</span><br></pre></td></tr></table></figure>
+<h2 id="np-random-RandomState"><a href="#np-random-RandomState" class="headerlink" title="np.random.RandomState"></a>np.random.RandomState</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># np.random.RandState() 为随机数生成器，可以使每次生成的随机数固定不变</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">RandomState(d0)</span></span><br><span class="line"><span class="string">	参数表示随机种子，只要生成器的种子相同，则生成的随机数一定相同</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line">state = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">state.rand(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">array([<span class="number">0.09233859</span>, <span class="number">0.18626021</span>, <span class="number">0.34556073</span>, <span class="number">0.39676747</span>, <span class="number">0.53881673</span>,</span><br><span class="line">       <span class="number">0.41919451</span>, <span class="number">0.6852195</span> , <span class="number">0.20445225</span>, <span class="number">0.87811744</span>, <span class="number">0.02738759</span>])</span><br><span class="line"><span class="comment"># 上面，我们使用同一个生成器state多次生成的rand随机数是不变的</span></span><br><span class="line"><span class="comment"># 但是，使用相同种子的不同生成器，生成的随机数是不同的，比如</span></span><br><span class="line">state2 = np.random.RandomState(<span class="number">1</span>)</span><br><span class="line">state2.rand(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">array([<span class="number">4.17022005e-01</span>, <span class="number">7.20324493e-01</span>, <span class="number">1.14374817e-04</span>, <span class="number">3.02332573e-01</span>,</span><br><span class="line">       <span class="number">1.46755891e-01</span>, <span class="number">9.23385948e-02</span>, <span class="number">1.86260211e-01</span>, <span class="number">3.45560727e-01</span>,</span><br><span class="line">       <span class="number">3.96767474e-01</span>, <span class="number">5.38816734e-01</span>])</span><br><span class="line"><span class="comment"># state2生成的rand随机数与state1是不同的</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -439,8 +433,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/15/matplotlib绘图笔记一-子图创建/" rel="next" title="matplotlib绘图笔记一-子图创建">
-                <i class="fa fa-chevron-left"></i> matplotlib绘图笔记一-子图创建
+              <a href="/2019/01/15/matplotlib绘图笔记四-饼图-直方图-散点图/" rel="next" title="matplotlib绘图笔记四-饼图/直方图/散点图">
+                <i class="fa fa-chevron-left"></i> matplotlib绘图笔记四-饼图/直方图/散点图
               </a>
             
           </div>
@@ -448,10 +442,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/15/matplotlib绘图笔记三-面积图和填图/" rel="prev" title="matplotlib绘图笔记三-面积图和填图">
-                matplotlib绘图笔记三-面积图和填图 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -607,7 +597,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#柱状图-多系列柱状图-堆叠图-条形图（横向柱状图）"><span class="nav-number">1.</span> <span class="nav-text">柱状图/多系列柱状图/堆叠图/条形图（横向柱状图）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个带有标注的柱状图"><span class="nav-number">2.</span> <span class="nav-text">一个带有标注的柱状图</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于用法"><span class="nav-number">1.</span> <span class="nav-text">关于用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-random-rand"><span class="nav-number">2.</span> <span class="nav-text">np.random.rand()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-random-randn"><span class="nav-number">3.</span> <span class="nav-text">np.random.randn()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-random-randint"><span class="nav-number">4.</span> <span class="nav-text">np.random.randint()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#np-random-RandomState"><span class="nav-number">5.</span> <span class="nav-text">np.random.RandomState</span></a></li></ol></div>
             
 
           </div>
